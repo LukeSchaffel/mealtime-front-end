@@ -7,10 +7,9 @@ const NavBar = ({ user, handleLogout }) => {
       <header className="App-header">
         Logged in as {user.name}
         <nav>
-          <NavLink to='/'>Puppy List</NavLink>
-          <NavLink to='/add'>Add Puppy</NavLink>
+          <NavLink to='/recipes'>All Recipes</NavLink>
+          <NavLink to='/restaurants'>All Restaurants</NavLink>
           <NavLink to="/" onClick={handleLogout}>Log Out</NavLink>
-          <NavLink to="/changePassword">Change Password</NavLink>
         </nav>
       </header>
       :
