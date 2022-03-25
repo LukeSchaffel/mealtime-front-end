@@ -27,7 +27,7 @@ function AddRecipe(props){
       recipeFormData.append('creator', formData.creator)
       recipeFormData.append('calories', formData.calories)
       recipeFormData.append('restaurants', formData.restaurants)
-      props.handleAddRecepe(recipeFormData)
+      props.handleAddRecipe(recipeFormData)
   }
 
       const handleChangePhoto = evt => {
@@ -40,7 +40,7 @@ function AddRecipe(props){
             <form autoComplete="off" ref={formElement} onSubmit={handleSubmit}>
               <div className="form-group mb-3">
                 <label htmlFor="name-input" className="form-label">
-                  Puppy's Name (required)
+                  recipe's Name (required)
                 </label>
                 <input 
                   type="text"
@@ -52,22 +52,83 @@ function AddRecipe(props){
                   required
                 />
            	</div>
-
-
-
-
-
-
-
-
-
-
-
-             
+              <div className="form-group mb-3">
+                <label htmlFor="name-input" className="form-label">
+                  ingredients (required)
+                </label>
+                <input 
+                  type="text"
+                  className="form-control"
+                  id="ingredient-input"
+                  name="ingredients"
+                  value={formData.ingredients}
+                  onChange={handleChange}
+                  required
+                />
+           	</div>
+              <div className="form-group mb-3">
+                <label htmlFor="name-input" className="form-label">
+                instructions (required)
+                </label>
+                <input 
+                  type="text"
+                  className="form-control"
+                  id="instruction-input"
+                  name="instructions"
+                  value={formData.instructions}
+                  onChange={handleChange}
+                  required
+                />
+           	</div>
+              <div className="form-group mb-3">
+                <label htmlFor="name-input" className="form-label">
+                Calories 
+                </label>
+                <input 
+                  type="text"
+                  className="form-control"
+                  id="calories-input"
+                  name="calories"
+                  value={formData.calories}
+                  onChange={handleChange}
+                />
+           	</div>
+              <div className="form-group mb-3">
+                <label htmlFor="name-input" className="form-label">
+                prepTime 
+                </label>
+                <input 
+                  type="text"
+                  className="form-control"
+                  id="prepTime-input"
+                  name="prepTime"
+                  value={formData.prepTime}
+                  onChange={handleChange}
+                />
+           	</div>
+             <div className="form-group mb-4">
+					<label htmlFor="picture-upload" className="form-label">
+						Upload Photo
+					</label>
+					<input
+						type="file"
+						className="form-control"
+						id="picture-upload"
+						name="picture"
+						onChange={handleChangePhoto}
+					/>
+          	</div>
+            	<div className="d-grid">
+					<button
+						type="submit"
+						className="btn btn-primary btn-fluid"
+            disabled={!validForm}
+					>
+						Add Recipe
+					</button>
+				</div>
            </form>
       </>
-      
-      
       
       )
 
