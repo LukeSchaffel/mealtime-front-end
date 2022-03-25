@@ -1,9 +1,9 @@
 import { useState, useRef, useEffect } from "react"
 
-function AddRecepie(props){
+function AddRecipe(props){
 
 
 
 
 }
-export default AddRecepie;
+export default AddRecipe;
