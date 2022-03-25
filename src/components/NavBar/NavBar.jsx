@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 const NavBar = ({ user, handleLogout }) => {
   return (
@@ -7,13 +7,13 @@ const NavBar = ({ user, handleLogout }) => {
       <header className="App-header">
         Logged in as {user.name}
         <nav>
-          <NavLink to='/recipes'>All Recipes</NavLink>
-          <NavLink to='/restaurants'>All Restaurants</NavLink>
-          <NavLink to='/profiles/profile'>My profile</NavLink>
+          <NavLink end to='/recipes' >All Recipes</NavLink>
+          <NavLink end to='/restaurants'>All Restaurants</NavLink>
+          <NavLink end to='/profiles/profile'>My profile</NavLink>
           <NavLink to='/profiles/profile/schedule'>Meal schedule</NavLink>
           <NavLink to='/recipes/add'>Add Recipe</NavLink>
-          <NavLink to='/restaurants/add'>Add Restaurant</NavLink>
-          <NavLink to="/" onClick={handleLogout}>Log Out</NavLink>
+          <NavLink to='/restaurants/add' >Add Restaurant</NavLink>
+          <Link to='/' onClick={handleLogout}>Log Out</Link>
         </nav>
       </header>
       :
