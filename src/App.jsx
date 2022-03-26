@@ -9,6 +9,7 @@ import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import * as authService from './services/authService'
 import AddRecipe from './pages/AddRecipe/AddRecipe'
+import Recipes from './pages/Recipes/Recipes'
 import * as recipeService from './services/recipes'
 import AddRestaurant from './pages/AddRestaurant/AddRestaurant'
 import * as restaurantService from './services/restaurants'
@@ -25,6 +26,12 @@ const App = () => {
       .then(allRecipes => setRecipes(allRecipes))
     }
   }, [user])
+
+
+  const handleDeleteRecipe = id => {
+    recipeService.deleteOne(id)
+    .then(deletedRecipe => setRecipes(recipes.filter(recipe => recipe._id !== deletedRecipe._id)))
+  }
 
   const handleLogout = () => {
     authService.logout()
@@ -76,6 +83,14 @@ const App = () => {
         <Route
           path="/login"
           element={<Login handleSignupOrLogin={handleSignupOrLogin} />}
+        />
+        <Route
+        path='/recipes'
+        element={<Recipes 
+          recipes={recipes} 
+          user={user}
+          handleDeleteRecipe={handleDeleteRecipe}
+          />}
         />
         <Route
           path="/profiles"

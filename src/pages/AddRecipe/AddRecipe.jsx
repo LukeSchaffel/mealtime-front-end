@@ -26,7 +26,6 @@ function AddRecipe(props){
       const recipeFormData = new FormData()
       recipeFormData.append('picture', formData.picture)
       recipeFormData.append('name', formData.name)
-      recipeFormData.append('ingredients', formData.age)
       recipeFormData.append('prepTime', formData.prepTime)
       recipeFormData.append('calories', formData.calories)
       props.handleAddRecipe(recipeFormData)
