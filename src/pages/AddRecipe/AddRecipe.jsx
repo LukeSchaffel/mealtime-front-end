@@ -8,9 +8,7 @@ function AddRecipe(props){
     ingredients: '',
     instructions: '',
     prepTime: '',
-    creator: '',
-    restaurants: '',
-    calories: '',
+    calories: 0
   })
 
   useEffect(()=> {
@@ -24,15 +22,17 @@ function AddRecipe(props){
     const handleSubmit = evt => {
       evt.preventDefault()
       const recipeFormData = new FormData()
-      recipeFormData.append('picture', formData.picture)
       recipeFormData.append('name', formData.name)
-      recipeFormData.append('prepTime', formData.prepTime)
+      recipeFormData.append('ingredients', formData.ingredients)
+      recipeFormData.append('instructions', formData.instructions)
       recipeFormData.append('calories', formData.calories)
+      recipeFormData.append('prepTime', formData.prepTime)
+      recipeFormData.append('picture', formData.picture)
       props.handleAddRecipe(recipeFormData)
   }
 
-      const handleChangePhoto = evt => {
-      setFormData({...formData, photo: evt.target.files[0]})
+      const handleChangePicture = evt => {
+      setFormData({...formData, picture: evt.target.files[0]})
     }
 
     return(
@@ -54,13 +54,13 @@ function AddRecipe(props){
                 />
            	</div>
               <div className="form-group mb-3">
-                <label htmlFor="name-input" className="form-label">
+                <label htmlFor="ingredients-input" className="form-label">
                   ingredients (required)
                 </label>
                 <input 
                   type="text"
                   className="form-control"
-                  id="ingredient-input"
+                  id="ingredients-input"
                   name="ingredients"
                   value={formData.ingredients}
                   onChange={handleChange}
@@ -68,13 +68,13 @@ function AddRecipe(props){
                 />
            	</div>
               <div className="form-group mb-3">
-                <label htmlFor="name-input" className="form-label">
+                <label htmlFor="instructions-input" className="form-label">
                 instructions (required)
                 </label>
                 <input 
                   type="text"
                   className="form-control"
-                  id="instruction-input"
+                  id="instructions-input"
                   name="instructions"
                   value={formData.instructions}
                   onChange={handleChange}
@@ -82,11 +82,11 @@ function AddRecipe(props){
                 />
            	</div>
               <div className="form-group mb-3">
-                <label htmlFor="name-input" className="form-label">
+                <label htmlFor="calories-input" className="form-label">
                 Calories 
                 </label>
                 <input 
-                  type="text"
+                  type="number"
                   className="form-control"
                   id="calories-input"
                   name="calories"
@@ -95,7 +95,7 @@ function AddRecipe(props){
                 />
            	</div>
               <div className="form-group mb-3">
-                <label htmlFor="name-input" className="form-label">
+                <label htmlFor="prepTime-input" className="form-label">
                 prepTime 
                 </label>
                 <input 
@@ -116,7 +116,7 @@ function AddRecipe(props){
 						className="form-control"
 						id="picture-upload"
 						name="picture"
-						onChange={handleChangePhoto}
+						onChange={handleChangePicture}
 					/>
           	</div>
             	<div className="d-grid">
@@ -128,7 +128,7 @@ function AddRecipe(props){
 						Add Recipe
 					</button>
 				</div>
-           </form>
+        </form>
       </>
       
       )

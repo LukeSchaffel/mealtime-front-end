@@ -6,7 +6,6 @@ function create(recipe) {
   return fetch(BASE_URL, {
     method: 'POST',
     headers: {
-      'content-type': 'application/json',
       'Authorization': `Bearer ${tokenService.getToken()}`
     },
     body: recipe
