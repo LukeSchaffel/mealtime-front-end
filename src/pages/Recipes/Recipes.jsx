@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import RecipeCard from "../../components/RecipeCard/RecipeCard";
 
 const Recipes = (props) => {
   return ( 
@@ -6,11 +6,11 @@ const Recipes = (props) => {
     <h1>All Recipes</h1>
       <div>
         {props.recipes.map(recipe => {
-          // <RecipeCard
-          //   key={recipe._id}
-          //   recipe={recipe}
-          //   handleDeleteRecipe={props.handleDeleteRecipe}
-          //   user={user} />
+          <RecipeCard
+            key={recipe._id}
+            recipe={recipe}
+            handleDeleteRecipe={props.handleDeleteRecipe}
+            user={props.user} />
           })}
       </div>
     </> 
