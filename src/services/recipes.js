@@ -2,9 +2,11 @@ import * as tokenService from './tokenService'
 const BASE_URL = `${process.env.REACT_APP_BACKEND_SERVER_URL}/api/meals`
 
 function create(recipe) {
+  console.log(BASE_URL)
   return fetch(BASE_URL, {
     method: 'POST',
     headers: {
+      'content-type': 'application/json',
       'Authorization': `Bearer ${tokenService.getToken()}`
     },
     body: recipe
