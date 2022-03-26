@@ -7,6 +7,10 @@ function AddRecipe(props){
     name: '',
     ingredients: '',
     instructions: '',
+    prepTime: '',
+    creator: '',
+    restaurants: '',
+    calories: '',
   })
 
   useEffect(()=> {
@@ -22,11 +26,8 @@ function AddRecipe(props){
       const recipeFormData = new FormData()
       recipeFormData.append('picture', formData.picture)
       recipeFormData.append('name', formData.name)
-     
       recipeFormData.append('prepTime', formData.prepTime)
-      
       recipeFormData.append('calories', formData.calories)
-      recipeFormData.append('restaurants', formData.restaurants)
       props.handleAddRecipe(recipeFormData)
   }
 

@@ -11,10 +11,12 @@ import * as authService from './services/authService'
 import AddRecipe from './pages/AddRecipe/AddRecipe'
 import Recipes from './pages/Recipes/Recipes'
 import * as recipeService from './services/recipes'
-
+import AddRestaurant from './pages/AddRestaurant/AddRestaurant'
+import * as restaurantService from './services/restaurants'
 
 const App = () => {
   const [recipes, setRecipes] = useState([])
+  const [restaurants, setRestaurants] = useState([])
   const [user, setUser] = useState(authService.getUser())
   const navigate = useNavigate()
 
@@ -46,6 +48,11 @@ const App = () => {
     setRecipes([...recipes, newRecipe])
     navigate('/')
   }
+  const handleAddRestaurant= async newRestaurantData => {
+    const newRestaurant = await restaurantService.create(newRestaurantData)
+    setRestaurants([...restaurants, newRestaurant])
+    navigate('/')
+  }
 
   return (
     <>
@@ -57,6 +64,14 @@ const App = () => {
             element={
               <AddRecipe 
                 handleAddRecipe={handleAddRecipe} 
+              />
+            } 
+          />
+      <Route 
+            path='/restaurants/add'
+            element={
+              <AddRestaurant 
+                handleAddRestaurant={handleAddRestaurant} 
               />
             } 
           />
