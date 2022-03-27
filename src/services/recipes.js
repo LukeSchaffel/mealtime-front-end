@@ -22,6 +22,15 @@ function getAll() {
   .then(res => res.json())
 }
 
+function getDetails(recipeId) {
+  return fetch(`${BASE_URL}/${recipeId}`, {
+    headers: {
+      'Authorization': `Bearer ${tokenService.getToken()}`
+    }
+  })
+  .then(res => res.json())
+}
+
 function deleteOne(id) {
   return fetch(`${BASE_URL}/${id}`, {
     method: 'DELETE',
@@ -46,6 +55,7 @@ function update(recipe) {
 export {
   create,
   getAll,
+  getDetails,
   deleteOne,
   update
 }
