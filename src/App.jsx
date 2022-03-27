@@ -13,9 +13,11 @@ import Recipes from './pages/Recipes/Recipes'
 import * as recipeService from './services/recipes'
 import AddRestaurant from './pages/AddRestaurant/AddRestaurant'
 import * as restaurantService from './services/restaurants'
+import RecipeDetails from './pages/RecipeDetails/RecipeDetails'
 
 const App = () => {
   const [recipes, setRecipes] = useState([])
+  
   const [restaurants, setRestaurants] = useState([])
   const [user, setUser] = useState(authService.getUser())
   const navigate = useNavigate()
@@ -60,18 +62,10 @@ const App = () => {
       <main>
       <Routes>
       <Route 
-            path='/recipes/add'
-            element={
-              <AddRecipe 
-                handleAddRecipe={handleAddRecipe} 
-              />
-            } 
-          />
-      <Route 
             path='/restaurants/add'
             element={
               <AddRestaurant 
-                handleAddRestaurant={handleAddRestaurant} 
+              handleAddRestaurant={handleAddRestaurant} 
               />
             } 
           />
@@ -90,6 +84,20 @@ const App = () => {
           recipes={recipes} 
           user={user}
           handleDeleteRecipe={handleDeleteRecipe}
+          />}
+        />
+        <Route 
+          path='/recipes/add'
+          element={
+            <AddRecipe 
+              handleAddRecipe={handleAddRecipe} 
+            />
+          } 
+        />
+        <Route
+        path='/recipes/:recipeId'
+        element={<RecipeDetails 
+          user={user}
           />}
         />
         <Route

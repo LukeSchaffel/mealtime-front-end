@@ -13,7 +13,12 @@ function RecipeCard({recipe, user, handleDeleteRecipe}) {
       : null
       }
       <div className="card-body">
-        <h2 className="card-text">{recipe.name}</h2>
+        <h2 className="card-text">
+          <Link
+            to={`/recipes/${recipe._id}`}
+          >
+            {recipe.name}
+          </Link></h2>
         <p className="card-text">Ingredients: {recipe.ingredients} </p>
         {recipe.calories ?
         <p className="card-text">Calories: {recipe.calories}</p>
