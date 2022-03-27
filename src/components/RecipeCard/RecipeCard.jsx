@@ -19,7 +19,10 @@ function RecipeCard({recipe, user, handleDeleteRecipe}) {
         <p className="card-text">Calories: {recipe.calories}</p>
         :null
         }
-        <p className="card-text">Preparation time</p>
+        {recipe.prepTime ?
+        <p className="card-text">Preparation time {recipe.prepTime}</p>
+        :null
+        }
       </div>
       {
         user.profile === recipe.creator?._id ?
@@ -45,7 +48,7 @@ function RecipeCard({recipe, user, handleDeleteRecipe}) {
             </button>
           </div>
         :
-        <div className="card-body">
+        <div className="card-footer">
           <p className="card-text"> {recipe.creator?.name ? recipe.creator?.name : 'Ninja'}'s recipe</p>
         </div>
       }
