@@ -15,6 +15,7 @@ import * as recipeService from './services/recipes'
 import AddRestaurant from './pages/AddRestaurant/AddRestaurant'
 import * as restaurantService from './services/restaurants'
 import RecipeDetails from './pages/RecipeDetails/RecipeDetails'
+import Profile from './pages/Profile/Profile'
 
 const App = () => {
   const [recipes, setRecipes] = useState([])
@@ -135,6 +136,10 @@ const App = () => {
         <Route
           path="/changePassword"
           element={user ? <ChangePassword handleSignupOrLogin={handleSignupOrLogin}/> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/profiles/profile"
+          element={user ? <Profile user={user} recipes={recipes}/> : <Navigate to="/login" />}
         />
       </Routes>
       </main>
