@@ -24,8 +24,10 @@ main {
   grid-gap: 20px;
 }
 
-
-
+button {
+  max-width: 30%;
+  margin: 5px auto;
+}
 
 #email {
   display: flex;
