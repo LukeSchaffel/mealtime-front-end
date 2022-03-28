@@ -1,12 +1,36 @@
 main {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
   text-align: center;
 }
 
 
 #recipeDiv {
+  margin: 0 auto;
   width: 90%;
   display: grid;
   grid-template-rows: repeat(minmax(170px, 1fr));
 	grid-template-columns: auto auto;
   grid-gap: 20px;
+}
+
+#restaurantDiv {
+  margin: 0 auto;
+  width: 90%;
+  display: grid;
+  grid-template-rows: repeat(minmax(170px, 1fr));
+	grid-template-columns: auto auto;
+  grid-gap: 20px;
+}
+
+
+
+
+#email {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  margin: 0 auto;
+  
 }

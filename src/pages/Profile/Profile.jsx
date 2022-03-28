@@ -15,7 +15,11 @@ const Profile = (props) => {
     <>
       <main>
         <h1>Welcome {props.user.name}</h1>
-        <h2>{props.user.email}</h2>
+        <div id={styles.email}>
+          <h2>{props.user.email}</h2>
+          
+          <Link to="/changePassword">Change Password</Link>
+        </div>
         <button
         type="button"
         className="btn btn-primary" >
@@ -66,7 +70,7 @@ const Profile = (props) => {
         </button>
 
         {showRestaurants ?  
-        <div>
+        <div id={styles.restaurantDiv}>
           {props.restaurants.map(restaurant=> (
             restaurant.creator._id === props.user.profile ?
             <RestaurantCard
