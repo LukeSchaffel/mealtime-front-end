@@ -139,7 +139,13 @@ const App = () => {
         />
         <Route
           path="/profiles/profile"
-          element={user ? <Profile user={user} recipes={recipes}/> : <Navigate to="/login" />}
+          element={user ? <Profile 
+            user={user} 
+            recipes={recipes}
+            restaurants={restaurants}
+            handleDeleteRecipe={handleDeleteRecipe}
+            handleDeleteRestaurant={handleDeleteRestaurant}
+            /> : <Navigate to="/login" />}
         />
       </Routes>
       </main>
