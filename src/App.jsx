@@ -33,6 +33,7 @@ const App = () => {
   const handleDeleteRecipe = id => {
     recipeService.deleteOne(id)
     .then(deletedRecipe => setRecipes(recipes.filter(recipe => recipe._id !== deletedRecipe._id)))
+    navigate('/recipes')
   }
 
   const handleLogout = () => {
@@ -48,7 +49,7 @@ const App = () => {
   const handleAddRecipe = async newRecipeData => {
     const newRecipe = await recipeService.create(newRecipeData)
     setRecipes([...recipes, newRecipe])
-    navigate('/')
+    navigate('/recipes')
   }
   const handleAddRestaurant= async newRestaurantData => {
     const newRestaurant = await restaurantService.create(newRestaurantData)
@@ -98,6 +99,7 @@ const App = () => {
         path='/recipes/:recipeId'
         element={<RecipeDetails 
           user={user}
+          handleDeleteRecipe={handleDeleteRecipe}
           />}
         />
         <Route
