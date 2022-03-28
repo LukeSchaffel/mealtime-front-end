@@ -10,6 +10,7 @@ import ChangePassword from './pages/ChangePassword/ChangePassword'
 import * as authService from './services/authService'
 import AddRecipe from './pages/AddRecipe/AddRecipe'
 import Recipes from './pages/Recipes/Recipes'
+import Restaurants from './pages/Restaurants/Restaurants'
 import * as recipeService from './services/recipes'
 import AddRestaurant from './pages/AddRestaurant/AddRestaurant'
 import * as restaurantService from './services/restaurants'
@@ -29,11 +30,23 @@ const App = () => {
     }
   }, [user])
 
+  useEffect(()=> {
+    if(user) {
+      restaurantService.getAll()
+      .then(allRestaurants => setRestaurants(allRestaurants))
+    }
+  }, [user])
+
 
   const handleDeleteRecipe = id => {
     recipeService.deleteOne(id)
     .then(deletedRecipe => setRecipes(recipes.filter(recipe => recipe._id !== deletedRecipe._id)))
     navigate('/recipes')
+  }
+  const handleDeleteRestaurant = id => {
+    restaurantService.deleteOne(id)
+    .then(deletedRestaurant => setRestaurants(restaurants.filter(restaurant => restaurant._id !== deletedRestaurant._id)))
+    navigate('/restaurants')
   }
 
   const handleLogout = () => {
@@ -54,7 +67,7 @@ const App = () => {
   const handleAddRestaurant= async newRestaurantData => {
     const newRestaurant = await restaurantService.create(newRestaurantData)
     setRestaurants([...restaurants, newRestaurant])
-    navigate('/')
+    navigate('/restaunts')
   }
 
   return (
@@ -69,6 +82,19 @@ const App = () => {
               handleAddRestaurant={handleAddRestaurant} 
               />
             } 
+          />
+           <Route
+            path='/restaurants'
+            element={
+              user ?
+              <Restaurants
+                handleDeleteRestaurant={handleDeleteRestaurant}
+                restaurants={restaurants}
+                user={user} 
+              />
+              :
+              <Navigate to='/login' />
+            }
           />
         <Route path="/" element={<Landing user={user} />} />
         <Route

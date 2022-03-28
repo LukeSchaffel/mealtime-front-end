@@ -19,7 +19,7 @@ function AddRecipe(props){
     setFormData({...formData, [evt.target.name]: evt.target.value})
   }
 
-    const handleSubmit = evt => {
+    const handleSubmit = evt => { 
       evt.preventDefault()
       const recipeFormData = new FormData()
       recipeFormData.append('name', formData.name)

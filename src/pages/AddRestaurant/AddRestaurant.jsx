@@ -49,6 +49,7 @@ function AddRestaurant(props){
 						name="name"
             value={formData.name}
             onChange={handleChange}
+						required
 					/>
 				</div>
 				<div className="form-group mb-3">
@@ -62,6 +63,7 @@ function AddRestaurant(props){
 						name="location"
             value={formData.location}
             onChange={handleChange}
+						required
 					/>
 				</div>
 				<div className="form-group mb-3">
