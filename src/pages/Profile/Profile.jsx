@@ -3,8 +3,8 @@ import RecipeCard from "../../components/RecipeCard/RecipeCard";
 import { useState,  } from 'react'
 
 const Profile = (props) => {
-  const [ showResults, setShowResults ] = useState(false)
-  const onClick = () => !showResults ? setShowResults(true) : setShowResults(false)
+  const [ showRecipes, setShowRecipes ] = useState(false)
+  const onClick = () => !showRecipes ? setShowRecipes(true) : setShowRecipes(false)
   
   return ( 
     <>
@@ -12,13 +12,13 @@ const Profile = (props) => {
         <h1>Welcome {props.user.name}</h1>
         <h2>{props.user.email}</h2>
         <button onClick={onClick}>
-          {!showResults ? <h4>My Meals</h4> 
+          {!showRecipes ? <h4>My Recipes</h4> 
           :
-          <h4>Hide My Meals</h4>
+          <h4>Hide My Recipes</h4>
           }
         </button>
         
-        {showResults ? 
+        {showRecipes ? 
           <div> 
             {props.recipes.map(recipe => (
               recipe.creator._id === props.user.profile ? 
