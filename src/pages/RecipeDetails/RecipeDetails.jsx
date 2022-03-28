@@ -1,11 +1,15 @@
-import { useState, useEffect } from 'react';
-import { getDetails } from '../../services/recipes' 
+import { useState, useEffect, useRef } from 'react';
+import { getDetails, addReview } from '../../services/recipes' 
 import { Link, useParams } from 'react-router-dom';
 
 
 
 const RecipeDetails = ({user, handleDeleteRecipe}) => {
-
+  const formElement = useRef()
+  const [validForm, setValidForm] = useState(false)
+	const [formData, setFormData] = useState({
+		content:''
+	})
   const [recipe, setRecipe] = useState({})
   const { recipeId } = useParams()
 
@@ -13,6 +17,25 @@ const RecipeDetails = ({user, handleDeleteRecipe}) => {
     getDetails(recipeId)
     .then(recipeData => setRecipe(recipeData))
   }, [])
+
+  useEffect(() => {
+		formElement.current.checkValidity() ? setValidForm(true) : setValidForm(false)
+	}, [formData])
+
+  const handleChange = evt => {
+		setFormData({ ...formData, [evt.target.name]: evt.target.value })
+	}
+
+  const handleAddReview = async (id, newRecipeData) => {
+    const newRecipe = await addReview(id, newRecipeData)
+    setRecipe({ ...newRecipe })
+    setFormData({content: ''})
+  }
+
+  const handleSubmit = evt => {
+		evt.preventDefault()
+		handleAddReview(recipeId, formData)
+	}
 
   return (
     <>
@@ -53,10 +76,44 @@ const RecipeDetails = ({user, handleDeleteRecipe}) => {
           </button>
         </div>
       :
+        <>
         <div>
           <h4 className="card-text"> {recipe.creator?.name ? recipe.creator?.name : 'Ninja'}'s recipe</h4>
         </div>
+        <form 
+          id="add-review-form"
+          autoComplete="off" ref={formElement} onSubmit={handleSubmit}
+        >
+          <label htmlFor="content-textarea">Review:</label>
+          <textarea name="content"    id="content-textarea" value={formData.content}
+						onChange={handleChange}
+            required>
+          </textarea>
+          <button type="submit" disabled={!validForm}>Add Review</button>
+        </form>
+        </>
       }
+      <h1>Reviews</h1>
+      { recipe.reviews?.length ?
+          <table>
+            <thead>
+              <tr>
+               <th>Date</th>
+               <th>Review</th>
+              </tr>
+            </thead>
+            <tbody>
+              {recipe.reviews.map(review => {
+                return <tr key ={review._id}>
+                  <td>{review.createdAt?.slice(0,10)}</td>
+                  <td>{review.content}</td>
+                </tr>
+              })}
+            </tbody>
+          </table>
+       :
+        <h3>No Reviews Yet</h3>
+       } 
     </>
 
   )

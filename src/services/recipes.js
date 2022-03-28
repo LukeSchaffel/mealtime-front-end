@@ -2,7 +2,6 @@ import * as tokenService from './tokenService'
 const BASE_URL = `${process.env.REACT_APP_BACKEND_SERVER_URL}/api/meals`
 
 function create(recipe) {
-  console.log(BASE_URL)
   return fetch(BASE_URL, {
     method: 'POST',
     headers: {
@@ -52,10 +51,23 @@ function update(recipe) {
   .then(res => res.json())
 }
 
+function addReview(recipeId, reviewData) {
+  return fetch(`${BASE_URL}/${recipeId}/reviews`, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${tokenService.getToken()}`,
+      'content-type': 'application/json'
+    },
+    body: JSON.stringify(reviewData)
+  })
+  .then(res => res.json())
+}
+
 export {
   create,
   getAll,
   getDetails,
   deleteOne,
-  update
+  update,
+  addReview
 }
