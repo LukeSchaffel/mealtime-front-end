@@ -144,6 +144,7 @@ const App = () => {
             recipes={recipes}
             restaurants={restaurants}
             handleDeleteRecipe={handleDeleteRecipe}
+            handleDeleteRestaurant={handleDeleteRestaurant}
             /> : <Navigate to="/login" />}
         />
       </Routes>
