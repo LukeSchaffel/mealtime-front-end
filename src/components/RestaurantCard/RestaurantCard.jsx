@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
 
 function RestaurantCard({restaurant, user, handleDeleteRestaurant}) {
+  const [ loggedIn, setLoggedIn  ] = useState(user ? true : false)
+    
   return(
     
     <div className="card">
@@ -26,7 +29,7 @@ function RestaurantCard({restaurant, user, handleDeleteRestaurant}) {
         :null
         }
       </div>
-      {
+      {loggedIn &&
         user.profile === restaurant.creator?._id ?
           <div className="card-footer">
              <Link
