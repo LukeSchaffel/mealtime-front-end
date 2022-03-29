@@ -21,17 +21,17 @@ import EditRestaurant from './pages/EditRestaurant/EditRestaurant'
 
 const App = () => {
   const [recipes, setRecipes] = useState([])
-  
+
   const [restaurants, setRestaurants] = useState([])
   const [user, setUser] = useState(authService.getUser())
   const navigate = useNavigate()
 
   useEffect(()=> {
-    if(user) {
+    
       recipeService.getAll()
       .then(allRecipes => setRecipes(allRecipes))
-    }
-  }, [user])
+    
+  }, [])
 
   useEffect(()=> {
     if(user) {
@@ -109,14 +109,13 @@ const App = () => {
            <Route
             path='/restaurants'
             element={
-              user ?
+              
               <Restaurants
                 handleDeleteRestaurant={handleDeleteRestaurant}
                 restaurants={restaurants}
                 user={user} 
               />
-              :
-              <Navigate to='/login' />
+              
             }
           />
 
