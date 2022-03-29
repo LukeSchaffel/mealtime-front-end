@@ -10,15 +10,17 @@ import ChangePassword from './pages/ChangePassword/ChangePassword'
 import * as authService from './services/authService'
 import AddRecipe from './pages/AddRecipe/AddRecipe'
 import Recipes from './pages/Recipes/Recipes'
+import Schedule from './pages/Schedule/Schedule'
 import Restaurants from './pages/Restaurants/Restaurants'
 import * as recipeService from './services/recipes'
 import AddRestaurant from './pages/AddRestaurant/AddRestaurant'
 import * as restaurantService from './services/restaurants'
+import * as profileService from './services/profileService'
 import RecipeDetails from './pages/RecipeDetails/RecipeDetails'
 
 const App = () => {
   const [recipes, setRecipes] = useState([])
-  
+  const [schedules, setSchedules] = useState([])
   const [restaurants, setRestaurants] = useState([])
   const [user, setUser] = useState(authService.getUser())
   const navigate = useNavigate()
@@ -37,6 +39,10 @@ const App = () => {
     }
   }, [user])
 
+  useEffect(()=> {
+    profileService.getAllProfiles()
+    .then(schedules => setSchedules(schedules))
+  }, [user])
 
   const handleDeleteRecipe = id => {
     recipeService.deleteOne(id)
@@ -90,6 +96,18 @@ const App = () => {
               <Restaurants
                 handleDeleteRestaurant={handleDeleteRestaurant}
                 restaurants={restaurants}
+                user={user} 
+              />
+              :
+              <Navigate to='/login' />
+            }
+          />
+           <Route
+            path='/schedule'
+            element={
+              user ?
+              <Schedule
+                schedules={schedules}
                 user={user} 
               />
               :
