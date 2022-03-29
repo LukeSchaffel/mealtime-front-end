@@ -17,6 +17,7 @@ import * as restaurantService from './services/restaurants'
 import RecipeDetails from './pages/RecipeDetails/RecipeDetails'
 import Profile from './pages/Profile/Profile'
 import EditRecipe from './pages/EditRecipe/EditRecipe'
+import EditRestaurant from './pages/EditRestaurant/EditRestaurant'
 
 const App = () => {
   const [recipes, setRecipes] = useState([])
@@ -82,6 +83,16 @@ const App = () => {
     navigate('/restaurants')
   }
 
+  const handleUpdateRestaurant = updateRestaurantData => {
+    restaurantService.update(updateRestaurantData)
+    .then(updatedRestaurant => {
+      const newRestaurantsArray = restaurants.map(restaurant => restaurant._id === updatedRestaurant._id ? updatedRestaurant : restaurant)
+      setRestaurants(newRestaurantsArray)
+      navigate('/restaurants')
+    })
+
+  }
+
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
@@ -108,6 +119,17 @@ const App = () => {
               <Navigate to='/login' />
             }
           />
+
+            <Route 
+             path='/editRestaurant'
+             element={<EditRestaurant 
+              restaurants={restaurants}
+              user={user}
+              handleUpdateRestaurant={handleUpdateRestaurant}
+             
+             />}
+            />
+
         <Route path="/" element={<Landing user={user} />} />
         <Route
           path="/signup"
