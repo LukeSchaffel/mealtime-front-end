@@ -51,7 +51,7 @@ function RestaurantCard({restaurant, user, handleDeleteRestaurant}) {
           </div>
         :
         <div className="card-footer">
-          <p className="card-text"> {restaurant.creator?.name ? restaurant.creator?.name : 'Chef'}'s recipe</p>
+          <p className="card-text"> {restaurant.creator?.name ? restaurant.creator?.name : 'Chef'}'s Restaurant</p>
         </div>
       }
       
