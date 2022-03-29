@@ -16,6 +16,7 @@ import AddRestaurant from './pages/AddRestaurant/AddRestaurant'
 import * as restaurantService from './services/restaurants'
 import RecipeDetails from './pages/RecipeDetails/RecipeDetails'
 import Profile from './pages/Profile/Profile'
+import EditRecipe from './pages/EditRecipe/EditRecipe'
 
 const App = () => {
   const [recipes, setRecipes] = useState([])
@@ -65,7 +66,16 @@ const App = () => {
     setRecipes([...recipes, newRecipe])
     navigate('/recipes')
   }
-  
+
+  const handleUpdateRecipe = updateRecipeData => {
+    recipeService.update(updateRecipeData)
+    .then(updatedRecipe => {
+      const newRecipesArray = recipes.map(recipe => recipe._id === updatedRecipe._id ? updatedRecipe : recipe)
+      setRecipes(newRecipesArray)
+      navigate('/recipes')
+    })
+  }
+
   const handleAddRestaurant= async newRestaurantData => {
     const newRestaurant = await restaurantService.create(newRestaurantData)
     setRestaurants([...restaurants, newRestaurant])
@@ -148,6 +158,14 @@ const App = () => {
             handleDeleteRestaurant={handleDeleteRestaurant}
             /> : <Navigate to="/login" />}
         />
+        <Route 
+            path='/edit'
+            element={
+              <EditRecipe
+                handleUpdateRecipe={handleUpdateRecipe}
+              />
+            }
+          />
       </Routes>
       </main>
     </>
