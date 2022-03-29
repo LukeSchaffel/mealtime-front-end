@@ -17,6 +17,7 @@ import * as restaurantService from './services/restaurants'
 import RecipeDetails from './pages/RecipeDetails/RecipeDetails'
 import Profile from './pages/Profile/Profile'
 import EditRecipe from './pages/EditRecipe/EditRecipe'
+import EditRestaurant from './pages/EditRestaurant/EditRestaurant'
 
 const App = () => {
   const [recipes, setRecipes] = useState([])
@@ -108,6 +109,16 @@ const App = () => {
               <Navigate to='/login' />
             }
           />
+
+            <Route 
+             path='/editRestaurant'
+             element={<EditRestaurant 
+              restaurants={restaurants}
+              user={user}
+             
+             />}
+            />
+
         <Route path="/" element={<Landing user={user} />} />
         <Route
           path="/signup"

@@ -37,7 +37,7 @@ function RestaurantCard({restaurant, user, handleDeleteRestaurant}) {
             </Link>
             <Link
               className='btn btn-sm btn-warning'
-              to='/edit'
+              to='/editRestaurant'
               state={{restaurant}}
             >
               Edit
