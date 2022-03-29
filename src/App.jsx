@@ -79,7 +79,7 @@ const App = () => {
   const handleAddRestaurant= async newRestaurantData => {
     const newRestaurant = await restaurantService.create(newRestaurantData)
     setRestaurants([...restaurants, newRestaurant])
-    navigate('/restaunts')
+    navigate('/restaurants')
   }
 
   return (

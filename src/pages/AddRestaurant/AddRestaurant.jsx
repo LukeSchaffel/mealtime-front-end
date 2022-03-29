@@ -6,8 +6,7 @@ function AddRestaurant(props){
   const [formData, setFormData] = useState({
     name: '',
     location: '',
-    picture: '',
-    link: '',
+    link: ''
   })
   
   useEffect(()=> {
@@ -30,8 +29,8 @@ function AddRestaurant(props){
 
   }
 
-    const handleChangePhoto = evt => {
-      setFormData({...formData, photo: evt.target.files[0]})
+    const handleChangePicture = evt => {
+      setFormData({...formData, picture: evt.target.files[0]})
     }
 
     return(
@@ -53,13 +52,13 @@ function AddRestaurant(props){
 					/>
 				</div>
 				<div className="form-group mb-3">
-					<label htmlFor="name-input" className="form-label">
+					<label htmlFor="location-input" className="form-label">
 						Restaurant's Location 
 					</label>
 					<input 
 						type="text"
 						className="form-control"
-						id="name-input"
+						id="location-input"
 						name="location"
             value={formData.location}
             onChange={handleChange}
@@ -67,13 +66,13 @@ function AddRestaurant(props){
 					/>
 				</div>
 				<div className="form-group mb-3">
-					<label htmlFor="name-input" className="form-label">
+					<label htmlFor="link-input" className="form-label">
 						Restaurant's website 
 					</label>
 					<input 
 						type="text"
 						className="form-control"
-						id="name-input"
+						id="link-input"
 						name="link"
             value={formData.link}
             onChange={handleChange}
@@ -88,7 +87,7 @@ function AddRestaurant(props){
 						className="form-control"
 						id="photo-upload"
 						name="picture"
-						onChange={handleChangePhoto}
+						onChange={handleChangePicture}
 					/>
 				</div>
         <div className="d-grid">
