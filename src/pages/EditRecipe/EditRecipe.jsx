@@ -24,6 +24,7 @@ function EditRecipe(props){
       recipeFormData.append('calories', formData.calories)
       recipeFormData.append('prepTime', formData.prepTime)
       recipeFormData.append('picture', formData.picture)
+      recipeFormData.append('_id', formData._id)
       props.handleUpdateRecipe(recipeFormData)
   }
 
