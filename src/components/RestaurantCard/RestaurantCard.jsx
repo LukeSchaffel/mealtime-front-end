@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 function RestaurantCard({restaurant, user, handleDeleteRestaurant}) {
   const [ loggedIn, setLoggedIn  ] = useState(user ? true : false)
-    
+  
   return(
     
     <div className="card">
