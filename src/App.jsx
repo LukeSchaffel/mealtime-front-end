@@ -10,18 +10,28 @@ import ChangePassword from './pages/ChangePassword/ChangePassword'
 import * as authService from './services/authService'
 import AddRecipe from './pages/AddRecipe/AddRecipe'
 import Recipes from './pages/Recipes/Recipes'
+import Schedule from './pages/Schedule/Schedule'
 import Restaurants from './pages/Restaurants/Restaurants'
 import * as recipeService from './services/recipes'
 import AddRestaurant from './pages/AddRestaurant/AddRestaurant'
 import * as restaurantService from './services/restaurants'
+import * as profileService from './services/profileService'
 import RecipeDetails from './pages/RecipeDetails/RecipeDetails'
+import FridayDetails from './pages/ScheduleDetails/FridayDetails'
+import MondayDetails from './pages/ScheduleDetails/MondaydDetails'
+import TuesdayDetails from './pages/ScheduleDetails/TuesdayDetails'
+import WednesdayDetails from './pages/ScheduleDetails/WednesdayDetails'
+import ThursdayDetails from './pages/ScheduleDetails/ThursdayDetails'
+import SaturdayDetails from './pages/ScheduleDetails/SaturdayDetails'
+import SundayDetails from './pages/ScheduleDetails/SundayDetails'
 import Profile from './pages/Profile/Profile'
 import EditRecipe from './pages/EditRecipe/EditRecipe'
 import EditRestaurant from './pages/EditRestaurant/EditRestaurant'
 
+
 const App = () => {
   const [recipes, setRecipes] = useState([])
-
+  const [schedules, setSchedules] = useState([])
   const [restaurants, setRestaurants] = useState([])
   const [user, setUser] = useState(authService.getUser())
   const navigate = useNavigate()
@@ -40,6 +50,10 @@ const App = () => {
     }
   }, [user])
 
+  useEffect(()=> {
+    profileService.getAllProfiles()
+    .then(schedules => setSchedules(schedules))
+  }, [user])
 
   const handleDeleteRecipe = id => {
     recipeService.deleteOne(id)
@@ -118,6 +132,18 @@ const App = () => {
               
             }
           />
+           <Route
+            path='/schedule'
+            element={
+              user ?
+              <Schedule
+                schedules={schedules}
+                user={user} 
+              />
+              :
+              <Navigate to='/login' />
+            }
+          />
 
             <Route 
              path='/editRestaurant'
@@ -159,6 +185,48 @@ const App = () => {
         element={<RecipeDetails 
           user={user}
           handleDeleteRecipe={handleDeleteRecipe}
+          />}
+        />
+        <Route
+        path='/schedule/friday'
+        element={<FridayDetails 
+          user={user}
+          />}
+        />
+        <Route
+        path='/schedule/monday'
+        element={<MondayDetails 
+          user={user}
+          />}
+        />
+        <Route
+        path='/schedule/tuesday'
+        element={<TuesdayDetails 
+          user={user}
+          />}
+        />
+        <Route
+        path='/schedule/Wednesday'
+        element={<WednesdayDetails 
+          user={user}
+          />}
+        />
+        <Route
+        path='/schedule/thursday'
+        element={<ThursdayDetails 
+          user={user}
+          />}
+        />
+        <Route
+        path='/schedule/saturday'
+        element={<SaturdayDetails 
+          user={user}
+          />}
+        />
+        <Route
+        path='/schedule/sunday'
+        element={<SundayDetails 
+          user={user}
           />}
         />
         <Route
