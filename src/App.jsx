@@ -17,6 +17,7 @@ import AddRestaurant from './pages/AddRestaurant/AddRestaurant'
 import * as restaurantService from './services/restaurants'
 import * as profileService from './services/profileService'
 import RecipeDetails from './pages/RecipeDetails/RecipeDetails'
+import Profile from './pages/Profile/Profile'
 
 const App = () => {
   const [recipes, setRecipes] = useState([])
@@ -70,10 +71,11 @@ const App = () => {
     setRecipes([...recipes, newRecipe])
     navigate('/recipes')
   }
+  
   const handleAddRestaurant= async newRestaurantData => {
     const newRestaurant = await restaurantService.create(newRestaurantData)
     setRestaurants([...restaurants, newRestaurant])
-    navigate('/restaunts')
+    navigate('/restaurants')
   }
 
   return (
@@ -153,6 +155,16 @@ const App = () => {
         <Route
           path="/changePassword"
           element={user ? <ChangePassword handleSignupOrLogin={handleSignupOrLogin}/> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/profiles/profile"
+          element={user ? <Profile 
+            user={user} 
+            recipes={recipes}
+            restaurants={restaurants}
+            handleDeleteRecipe={handleDeleteRecipe}
+            handleDeleteRestaurant={handleDeleteRestaurant}
+            /> : <Navigate to="/login" />}
         />
       </Routes>
       </main>
