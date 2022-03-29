@@ -10,7 +10,6 @@ const Profile = (props) => {
   const toggleRecipes = () => !showRecipes ? setShowRecipes(true) : setShowRecipes(false)
   const toggleRestaurants = () => !showRestaurants ?
   setShowRestaurants(true) : setShowRestaurants(false)
-  
   return ( 
     <>
       <main>
@@ -20,11 +19,12 @@ const Profile = (props) => {
           
           <Link to="/changePassword">Change Password</Link>
         </div>
-        <button
-        type="button"
-        className="btn btn-primary" >
+        <a href="/schedule" className='tag'><button
+        type="submit"
+        className="btn btn-primary"
+        formaction='/schedule' >
           <h4>Schedule</h4>
-        </button>
+        </button></a>
         <button 
         type="button"
         className="btn btn-primary"

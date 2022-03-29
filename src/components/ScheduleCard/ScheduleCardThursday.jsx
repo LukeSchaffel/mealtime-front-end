@@ -9,7 +9,11 @@ function ScheduleCardThursday({schedule, user, handleDeleteRecipe}) {
         alt="A delicious meal"
         className="card-img-top" 
       />
-      <h1>Thursday</h1>
+      <Link
+            to='/schedule/Thursday'
+          >
+            <h1>Thursday</h1>
+          </Link>
     </div>
   )
 }

@@ -17,7 +17,15 @@ import AddRestaurant from './pages/AddRestaurant/AddRestaurant'
 import * as restaurantService from './services/restaurants'
 import * as profileService from './services/profileService'
 import RecipeDetails from './pages/RecipeDetails/RecipeDetails'
+import FridayDetails from './pages/ScheduleDetails/FridayDetails'
+import MondayDetails from './pages/ScheduleDetails/MondaydDetails'
+import TuesdayDetails from './pages/ScheduleDetails/TuesdayDetails'
+import WednesdayDetails from './pages/ScheduleDetails/WednesdayDetails'
+import ThursdayDetails from './pages/ScheduleDetails/ThursdayDetails'
+import SaturdayDetails from './pages/ScheduleDetails/SaturdayDetails'
+import SundayDetails from './pages/ScheduleDetails/SundayDetails'
 import Profile from './pages/Profile/Profile'
+
 
 const App = () => {
   const [recipes, setRecipes] = useState([])
@@ -146,6 +154,48 @@ const App = () => {
         element={<RecipeDetails 
           user={user}
           handleDeleteRecipe={handleDeleteRecipe}
+          />}
+        />
+        <Route
+        path='/schedule/friday'
+        element={<FridayDetails 
+          user={user}
+          />}
+        />
+        <Route
+        path='/schedule/monday'
+        element={<MondayDetails 
+          user={user}
+          />}
+        />
+        <Route
+        path='/schedule/tuesday'
+        element={<TuesdayDetails 
+          user={user}
+          />}
+        />
+        <Route
+        path='/schedule/Wednesday'
+        element={<WednesdayDetails 
+          user={user}
+          />}
+        />
+        <Route
+        path='/schedule/thursday'
+        element={<ThursdayDetails 
+          user={user}
+          />}
+        />
+        <Route
+        path='/schedule/saturday'
+        element={<SaturdayDetails 
+          user={user}
+          />}
+        />
+        <Route
+        path='/schedule/sunday'
+        element={<SundayDetails 
+          user={user}
           />}
         />
         <Route
