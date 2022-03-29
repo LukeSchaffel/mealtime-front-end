@@ -83,6 +83,16 @@ const App = () => {
     navigate('/restaurants')
   }
 
+  const handleUpdateRestaurant = updateRestaurantData => {
+    restaurantService.update(updateRestaurantData)
+    .then(updatedRestaurant => {
+      const newRestaurantsArray = restaurants.map(restaurant => restaurant._id === updatedRestaurant._id ? updatedRestaurant : restaurant)
+      setRestaurants(newRestaurantsArray)
+      navigate('/restaurants')
+    })
+
+  }
+
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
@@ -115,6 +125,7 @@ const App = () => {
              element={<EditRestaurant 
               restaurants={restaurants}
               user={user}
+              handleUpdateRestaurant={handleUpdateRestaurant}
              
              />}
             />
