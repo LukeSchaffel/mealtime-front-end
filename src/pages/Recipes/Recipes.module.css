@@ -1,0 +1,10 @@
+#main {
+  margin: 0 auto;
+}
+
+#recipeDiv {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}

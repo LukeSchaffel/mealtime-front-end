@@ -44,11 +44,11 @@ const App = () => {
   }, [])
 
   useEffect(()=> {
-    if(user) {
+    
       restaurantService.getAll()
       .then(allRestaurants => setRestaurants(allRestaurants))
-    }
-  }, [user])
+    
+  }, [])
 
   useEffect(()=> {
     profileService.getAllProfiles()

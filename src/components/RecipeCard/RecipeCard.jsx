@@ -1,13 +1,14 @@
 import { Link } from 'react-router-dom'
 import { useState,  } from 'react'
+import styles from './RecipeCard.module.css'
 
 function RecipeCard({recipe, user, handleDeleteRecipe}) {
     const [ loggedIn, setLoggedIn  ] = useState(user ? true : false)
     
-
+  
   return(
     
-    <div className="card">
+    <div id={styles.cardStyle} className="card">
       {recipe.picture ?
       <img 
         src={recipe.picture}
