@@ -8,9 +8,14 @@
 
 .label,
 .button {
-  margin-right: 0.5rem;
+  margin-right: 6rem;
 }
 
 .inputContainer {
   margin-bottom: 1rem;
+}
+
+.button{
+  margin-top: 2rem;
+  width: 100px;
 }
