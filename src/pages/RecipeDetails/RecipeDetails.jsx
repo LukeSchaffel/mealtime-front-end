@@ -1,10 +1,12 @@
 import { useState, useEffect, useRef } from 'react';
-import { getDetails, addReview } from '../../services/recipes' 
+import { getDetails, addReview, removeRestaurantFromRecipe } from '../../services/recipes' 
 import { Link, useParams } from 'react-router-dom';
+import RestaurantCard from '../../components/RestaurantCard/RestaurantCard';
+import styles from './RecipeDetails.module.css'
 
 
 
-const RecipeDetails = ({user, handleDeleteRecipe}) => {
+const RecipeDetails = ({user, handleDeleteRecipe, handleDeleteRestaurant}) => {
   const formElement = useRef()
   const [validForm, setValidForm] = useState(false)
 	const [formData, setFormData] = useState({
@@ -32,6 +34,13 @@ const RecipeDetails = ({user, handleDeleteRecipe}) => {
     setFormData({content: ''})
   }
 
+  const handleRemoveRestaurantFromRecipe = (recipeId, restaurantId) => {
+    removeRestaurantFromRecipe(recipeId, restaurantId)
+    .then(newRecipe => {
+      setRecipe({ ...newRecipe })
+    })
+  }
+
   const handleSubmit = evt => {
 		evt.preventDefault()
 		handleAddReview(recipeId, formData)
@@ -52,6 +61,7 @@ const RecipeDetails = ({user, handleDeleteRecipe}) => {
     <h3>{recipe.calories}</h3>
     <h3>{recipe.prepTime}</h3>
     <h3>{recipe.instructions}</h3>
+    
     {
       user.profile === recipe.creator?._id ?
         <div>
@@ -100,6 +110,30 @@ const RecipeDetails = ({user, handleDeleteRecipe}) => {
         </form>
         </>
       }
+      
+        {recipe.restaurants?.map((restaurant, idx) => 
+       <div key={idx} className={styles.container}>
+        <RestaurantCard
+        
+        restaurant={restaurant} 
+        handleDeleteRestaurant={handleDeleteRestaurant}
+        user={user}
+        />
+        {user.profile === recipe.creator?._id ?
+          <button
+          className="btn btn-sm btn-primary"
+          type="submit"
+          onClick={()=> handleRemoveRestaurantFromRecipe(recipe._id, restaurant._id)}
+          >
+         Remove
+          </button>
+          :
+          null
+        }
+        
+        </div>
+        )}
+      
       <h1>Reviews</h1>
       { recipe.reviews?.length ?
           <table>
