@@ -62,6 +62,13 @@ const RecipeDetails = ({user, handleDeleteRecipe}) => {
             Add to schedule
           </Link>
           <Link
+              className='btn btn-sm btn-primary'
+              to='/restaurants/myRestaurants'
+              state={{recipe}}
+            >
+              Add Restaurant
+          </Link>
+          <Link
             className='btn btn-sm btn-warning'
             to='/edit'
             state={{recipe}}
