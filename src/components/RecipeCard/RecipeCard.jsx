@@ -33,6 +33,7 @@ function RecipeCard({recipe, user, handleDeleteRecipe}) {
         <p className="card-text">Preparation time {recipe.prepTime}</p>
         :null
         }
+        <p className="card-text">Restaurants {recipe.restaurants.length}</p>
       </div>
       
         {loggedIn &&
@@ -44,6 +45,13 @@ function RecipeCard({recipe, user, handleDeleteRecipe}) {
               >
                 Add to schedule
               </Link>
+              <Link
+              className='btn btn-sm btn-primary'
+              to='/restaurants/myRestaurants'
+              state={{recipe}}
+            >
+              Add Restaurant
+            </Link>
               <Link
                 className='btn btn-sm btn-warning'
                 to='/edit'

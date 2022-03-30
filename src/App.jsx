@@ -27,6 +27,7 @@ import SundayDetails from './pages/ScheduleDetails/SundayDetails'
 import Profile from './pages/Profile/Profile'
 import EditRecipe from './pages/EditRecipe/EditRecipe'
 import EditRestaurant from './pages/EditRestaurant/EditRestaurant'
+import MyRestaurants from './pages/MyRestaurants/MyRestaurants'
 
 
 const App = () => {
@@ -132,6 +133,15 @@ const App = () => {
               
             }
           />
+          <Route 
+          path='/restaurants/myRestaurants'
+          element={
+            <MyRestaurants 
+              restaurants={restaurants} 
+              user={user}
+            />
+          } 
+        />
            <Route
             path='/schedule'
             element={
