@@ -6,7 +6,7 @@ import styles from './RecipeDetails.module.css'
 
 
 
-const RecipeDetails = ({user, handleDeleteRecipe, handleDeleteRestaurant}) => {
+const RecipeDetails = ({user, handleDeleteRecipe, handleDeleteRestaurant, updateAfterRemoveRestaurant}) => {
   const formElement = useRef()
   const [validForm, setValidForm] = useState(false)
 	const [formData, setFormData] = useState({
@@ -38,6 +38,7 @@ const RecipeDetails = ({user, handleDeleteRecipe, handleDeleteRestaurant}) => {
     removeRestaurantFromRecipe(recipeId, restaurantId)
     .then(newRecipe => {
       setRecipe({ ...newRecipe })
+      updateAfterRemoveRestaurant(newRecipe)
     })
   }
 

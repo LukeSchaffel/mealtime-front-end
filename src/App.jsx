@@ -101,14 +101,10 @@ const App = () => {
     })
   }
 
-  // const handleRemoveRestaurantFromRecipe = (recipeId, restaurantId) => {
-  //   recipeService.removeRestaurantFromRecipe(recipeId, restaurantId)
-  //   .then(updatedRecipe => {
-  //     const newRecipesArray = recipes.map(recipe => recipe._id === updatedRecipe._id ? updatedRecipe : recipe)
-  //     setRecipes(newRecipesArray)
-  //     navigate(`/recipes/${recipeId}`)
-  //   })
-  // }
+  const updateAfterRemoveRestaurant = (newRecipe) => {
+      const newRecipesArray = recipes.map(recipe => recipe._id === newRecipe._id ? newRecipe : recipe)
+      setRecipes(newRecipesArray)
+    }
 
   const handleAddRestaurant= async newRestaurantData => {
     const newRestaurant = await restaurantService.create(newRestaurantData)
@@ -216,6 +212,7 @@ const App = () => {
           user={user}
           handleDeleteRecipe={handleDeleteRecipe}
           handleDeleteRestaurant={handleDeleteRestaurant}
+          updateAfterRemoveRestaurant={updateAfterRemoveRestaurant}
           />}
         />
         <Route
