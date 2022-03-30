@@ -145,10 +145,10 @@ const RecipeDetails = ({user, handleDeleteRecipe, handleDeleteRestaurant, update
               </tr>
             </thead>
             <tbody>
-              {recipe.reviews.map(review => {
+            {recipe.reviews.map(review => {
                 return <tr key ={review._id}>
                   <td>{review.createdAt?.slice(0,10)}</td>
-                  <td>{review.content}</td>
+                  <td>{review.content} {review.creator.name}</td>
                 </tr>
               })}
             </tbody>
