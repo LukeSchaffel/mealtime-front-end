@@ -34,6 +34,13 @@ function RecipeCard({recipe, user, handleDeleteRecipe}) {
         :null
         }
         <p className="card-text">Restaurants {recipe.restaurants.length}</p>
+        <div>
+          {recipe.restaurants.map((restaurant, idx) => 
+            <p key={idx}>
+              {restaurant.name}
+            </p>
+          )}
+        </div>
       </div>
       
         {loggedIn &&

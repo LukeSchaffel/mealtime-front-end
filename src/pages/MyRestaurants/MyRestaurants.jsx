@@ -16,6 +16,7 @@ const MyRestaurants = (props) => {
                 key={restaurant._id}
                 restaurant={restaurant}
                 state={{recipe}}
+                handleAddRestaurantToRecipe={props.handleAddRestaurantToRecipe}
                 user={props.user} />
               : null
               ))}

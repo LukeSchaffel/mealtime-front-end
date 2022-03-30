@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom'
 import { useState } from 'react'
 
-function RestaurantCard({restaurant, user, handleDeleteRestaurant}) {
+function RestaurantCard({restaurant, user, handleDeleteRestaurant, handleAddRestaurantToRecipe}) {
   const [ loggedIn, setLoggedIn  ] = useState(user ? true : false)
   let location = useLocation()
 
@@ -31,6 +31,7 @@ function RestaurantCard({restaurant, user, handleDeleteRestaurant}) {
           <button
           className="btn btn-sm btn-primary"
           type="submit"
+          onClick={()=> handleAddRestaurantToRecipe(location.state.recipe._id, restaurant)}
         >
           Add this Restaurant
         </button>
