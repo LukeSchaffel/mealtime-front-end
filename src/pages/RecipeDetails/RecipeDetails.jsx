@@ -107,6 +107,7 @@ const RecipeDetails = ({user, handleDeleteRecipe}) => {
               <tr>
                <th>Date</th>
                <th>Review</th>
+               <th>Critic</th>
               </tr>
             </thead>
             <tbody>
@@ -114,6 +115,7 @@ const RecipeDetails = ({user, handleDeleteRecipe}) => {
                 return <tr key ={review._id}>
                   <td>{review.createdAt?.slice(0,10)}</td>
                   <td>{review.content}</td>
+                  <td>{review.creator.name}</td>
                 </tr>
               })}
             </tbody>
