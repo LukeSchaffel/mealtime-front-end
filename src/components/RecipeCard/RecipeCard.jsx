@@ -9,14 +9,13 @@ function RecipeCard({recipe, user, handleDeleteRecipe}) {
   return(
     
     <div id={styles.cardStyle} className="card">
-      {recipe.picture ?
+      
       <img 
-        src={recipe.picture}
-        alt="A delicious meal"
-        className="card-img-top" 
+      src={recipe.picture ? recipe.picture : `https://picsum.photos/id/1050/300`} 
+      alt="Restaurant"
+      className="card-img-top" 
       />
-      : null
-      }
+      
       <div className="card-body">
         <h2 className="card-text">
           <Link
