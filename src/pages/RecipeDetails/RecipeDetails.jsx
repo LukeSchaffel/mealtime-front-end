@@ -57,8 +57,8 @@ const RecipeDetails = ({user, handleDeleteRecipe, handleDeleteRestaurant}) => {
       />
       : null
       }
-    <h3>{recipe.ingredients}</h3>
-    <h3>{recipe.calories}</h3>
+    <h3>Ingredients: {recipe.ingredients}</h3>
+    <h3>Calories: {recipe.calories}</h3>
     <h3>{recipe.prepTime}</h3>
     <h3>{recipe.instructions}</h3>
     
