@@ -7,21 +7,17 @@ main {
 
 
 #recipeDiv {
-  margin: 0 auto;
-  width: 90%;
-  display: grid;
-  grid-template-rows: repeat(minmax(170px, 1fr));
-	grid-template-columns: auto auto;
-  grid-gap: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 #restaurantDiv {
-  margin: 0 auto;
-  width: 90%;
-  display: grid;
-  grid-template-rows: repeat(minmax(170px, 1fr));
-	grid-template-columns: auto auto;
-  grid-gap: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 button {
