@@ -4,6 +4,21 @@ import { useState } from 'react'
 function RestaurantCard({restaurant, user, handleDeleteRestaurant, handleAddRestaurantToRecipe}) {
   const [ loggedIn, setLoggedIn  ] = useState(user ? true : false)
   let location = useLocation()
+  let addRestaurantElement;
+  if (location.state?.recipe) {
+    if((!location.state.recipe.restaurants.some(e => e._id===restaurant._id))) {
+      addRestaurantElement = <button
+      className="btn btn-sm btn-primary"
+      type="submit"
+      onClick={()=> handleAddRestaurantToRecipe(location.state.recipe._id, restaurant)}
+      >
+       Add this Restaurant
+      </button>
+    } else {
+      addRestaurantElement = <p>This Restaurant is already added</p>
+    }
+  }
+
 
   return(
     
@@ -22,19 +37,9 @@ function RestaurantCard({restaurant, user, handleDeleteRestaurant, handleAddRest
         <p className="card-text">link: {restaurant.link}</p>
         :null
         }
-        {restaurant.meals.length ?
-        <p className="card-text">Meals {restaurant.meals.length}</p>
-        :null
-        }
       </div>
       {location.state?.recipe ? 
-          <button
-          className="btn btn-sm btn-primary"
-          type="submit"
-          onClick={()=> handleAddRestaurantToRecipe(location.state.recipe._id, restaurant)}
-        >
-          Add this Restaurant
-        </button>
+          addRestaurantElement
           :
           loggedIn &&
             user.profile === restaurant.creator?._id ?
