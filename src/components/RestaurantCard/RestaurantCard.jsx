@@ -3,10 +3,12 @@ import { useState } from 'react'
 
 function RestaurantCard({restaurant, user, handleDeleteRestaurant, handleAddRestaurantToRecipe}) {
   const [ loggedIn, setLoggedIn  ] = useState(user ? true : false)
+  
   let location = useLocation()
+
   let addRestaurantElement;
   if (location.state?.recipe) {
-    if((!location.state.recipe.restaurants.some(e => e._id===restaurant._id))) {
+    if((!location.state.recipe.restaurants.some(rest => rest._id===restaurant._id))) {
       addRestaurantElement = <button
       className="btn btn-sm btn-primary"
       type="submit"

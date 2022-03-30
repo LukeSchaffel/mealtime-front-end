@@ -97,7 +97,7 @@ const App = () => {
     .then(updatedRecipe => {
       const newRecipesArray = recipes.map(recipe => recipe._id === updatedRecipe._id ? updatedRecipe : recipe)
       setRecipes(newRecipesArray)
-      navigate('/recipes')
+      navigate(`/recipes/${recipeId}`)
     })
   }
 
