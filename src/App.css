@@ -20,9 +20,20 @@
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
+
 }
 
 .App main h1 {
   color: var(--secondary-dark);
   margin-bottom: 5vmin;
+}
+
+.form-label{
+  color: rgb(238, 240, 241);
+  font-size: 20px;
+}
+
+.form-control{
+width: 53rem;
+margin-left: 4rem;
 }

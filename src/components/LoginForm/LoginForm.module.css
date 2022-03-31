@@ -4,11 +4,14 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 50px;
+  color: rgb(56, 137, 207);
+  margin-top: 10rem;
 }
 
 .label,
 .button {
   margin-right: 6rem;
+  
 }
 
 .inputContainer {
@@ -17,5 +20,23 @@
 
 .button{
   margin-top: 2rem;
-  width: 100px;
+  width: 150px;
+  font-size: 20px;
+}
+
+body{
+  background-image:url('food.jpg');
+}
+
+.label{
+  color: rgb(216, 223, 228);
+  font-size: 30px;
+  font-style: oblique;
+}
+
+h1{
+  color: rgb(216, 223, 228);
+  font-size: 30px;
+  font-style: oblique;
+  margin-top: 1rem;
 }
