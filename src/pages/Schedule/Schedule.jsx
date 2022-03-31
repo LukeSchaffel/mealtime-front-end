@@ -48,7 +48,6 @@ const Schedule = (props) => {
        />
        <ScheduleCardSaturday
        recipe={recipe}
-       handleAddRecipeToDay={props.handleAddRecipeToDay}
        profile={props.user.profile}
        />
       </div>

@@ -5,7 +5,6 @@ import NavBar from './components/NavBar/NavBar'
 import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
-import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import * as authService from './services/authService'
 import AddRecipe from './pages/AddRecipe/AddRecipe'
@@ -32,7 +31,6 @@ import MyRestaurants from './pages/MyRestaurants/MyRestaurants'
 
 const App = () => {
   const [recipes, setRecipes] = useState([])
-  const [schedules, setSchedules] = useState([])
   const [restaurants, setRestaurants] = useState([])
   const [user, setUser] = useState(authService.getUser())
   const [profile, setProfile] = useState({})
@@ -47,23 +45,14 @@ const App = () => {
    }, [user])
 
   useEffect(()=> {
-    
       recipeService.getAll()
       .then(allRecipes => setRecipes(allRecipes))
-    
   }, [])
 
   useEffect(()=> {
-    
       restaurantService.getAll()
       .then(allRestaurants => setRestaurants(allRestaurants))
-    
   }, [])
-
-  useEffect(()=> {
-    profileService.getAllProfiles()
-    .then(schedules => setSchedules(schedules))
-  }, [user])
 
   const handleDeleteRecipe = id => {
     recipeService.deleteOne(id)
@@ -194,7 +183,6 @@ const App = () => {
             element={
               user ?
               <Schedule
-                schedules={schedules}
                 user={user} 
                 handleAddRecipeToDay={handleAddRecipeToDay}
               />
@@ -310,10 +298,6 @@ const App = () => {
           profile={profile}
           handleRemoveRecipeFromDay={handleRemoveRecipeFromDay}
           />}
-        />
-        <Route
-          path="/profiles"
-          element={user ? <Profiles /> : <Navigate to="/login" />}
         />
         <Route
           path="/changePassword"

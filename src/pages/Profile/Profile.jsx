@@ -22,7 +22,7 @@ const Profile = (props) => {
         <a href="/schedule" className='tag'><button
         type="submit"
         className="btn btn-primary"
-        formaction='/schedule' >
+        formAction='/schedule' >
           <h4>Schedule</h4>
         </button></a>
         <button 
