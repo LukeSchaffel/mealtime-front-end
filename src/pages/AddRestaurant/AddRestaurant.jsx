@@ -35,7 +35,7 @@ function AddRestaurant(props){
 
     return(
 <>
-<h1>Add Restaurants</h1>
+
 			<form autoComplete="off" ref={formElement} onSubmit={handleSubmit}>
 				<div className="form-group mb-3">
 					<label htmlFor="name-input" className="form-label">

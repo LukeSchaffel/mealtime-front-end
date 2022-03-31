@@ -9,21 +9,28 @@ function RecipeCard({recipe, user, handleDeleteRecipe, handleAddRecipeToDay, pro
   return(
     
     <div id={styles.cardStyle} className="card">
-      {recipe.picture ?
+      
       <img 
-        src={recipe.picture}
-        alt="A delicious meal"
-        className="card-img-top" 
+      src={recipe.picture ? recipe.picture : `https://amalghosh.com/assets/food13.jpg`} 
+      alt="Recipe"
+      className="card-img-top" 
       />
-      : null
-      }
+      
       <div className="card-body">
+        {loggedIn ? 
         <h2 className="card-text">
-          <Link
-            to={`/recipes/${recipe._id}`}
-          >
-            {recipe.name}
-          </Link></h2>
+        <Link
+          to={`/recipes/${recipe._id}`}
+        >
+          {recipe.name}
+        </Link></h2>
+        :
+        <>
+        <h2>{recipe.name}</h2>
+        <p>Please <Link to="/login">log in</Link> to see recipe details</p>
+        </>
+        }
+        
         <p className="card-text">Ingredients: {recipe.ingredients} </p>
         {recipe.calories ?
         <p className="card-text">Calories: {recipe.calories}</p>

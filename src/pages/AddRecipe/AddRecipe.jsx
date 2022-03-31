@@ -37,7 +37,7 @@ function AddRecipe(props){
 
     return(
       <>
-      <h1>Add Recipe</h1>
+     
             <form autoComplete="off" ref={formElement} onSubmit={handleSubmit}>
               <div className="form-group mb-3">
                 <label htmlFor="name-input" className="form-label">
@@ -71,7 +71,7 @@ function AddRecipe(props){
                 <label htmlFor="instructions-input" className="form-label">
                 instructions (required)
                 </label>
-                <input 
+                <textarea 
                   type="text"
                   className="form-control"
                   id="instructions-input"

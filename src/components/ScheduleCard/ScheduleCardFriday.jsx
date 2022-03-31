@@ -8,7 +8,7 @@ function ScheduleCardFriday(props) {
     
     <div className="card">
       <img 
-        src={`https://picsum.photos/id/1060/300`}
+        src={`https://picsum.photos/id/102/300`}
         alt="A delicious meal"
         className="card-img-top" 
       />

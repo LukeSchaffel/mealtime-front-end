@@ -49,15 +49,13 @@ const RecipeDetails = ({user, handleDeleteRecipe, handleDeleteRestaurant, update
 
   return (
     <>
+    <div id={styles.recipeDiv}>
     <h1>{recipe.name}</h1>
-    {recipe.picture ?
-      <img 
-        src={recipe.picture}
-        alt="A delicious meal"
-        className="card-img-top" 
+    <img 
+      src={recipe.picture ? recipe.picture : `https://amalghosh.com/assets/food13.jpg`} 
+      alt="Recipe" 
       />
-      : null
-      }
+      
     <h3>Ingredients: {recipe.ingredients}</h3>
     {recipe.calories ?
     <h3>Calories: {recipe.calories}</h3>
@@ -164,6 +162,7 @@ const RecipeDetails = ({user, handleDeleteRecipe, handleDeleteRestaurant, update
        :
         <h3>No Reviews Yet</h3>
        } 
+       </div>
     </>
 
   )
