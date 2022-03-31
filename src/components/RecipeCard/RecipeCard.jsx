@@ -80,7 +80,6 @@ function RecipeCard({recipe, user, handleDeleteRecipe, handleAddRecipeToDay, pro
         className="btn btn-sm btn-primary"
           type="submit"
           onClick={()=> handleRemoveRecipeFromDay(recipe._id, profile, day)}
-          hidden={hiddenDiv}
         >Remove From Menu</button>
         :null
         } 

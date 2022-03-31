@@ -69,8 +69,6 @@ const RecipeDetails = ({user, handleDeleteRecipe, handleDeleteRestaurant, update
           <Link
             className='btn btn-sm btn-primary'
             to='/schedule'
-            state={{recipe}}
-            user={user}
           >
             Add to schedule
           </Link>
