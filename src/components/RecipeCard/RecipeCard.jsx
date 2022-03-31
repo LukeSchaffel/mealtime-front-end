@@ -17,12 +17,20 @@ function RecipeCard({recipe, user, handleDeleteRecipe, handleAddRecipeToDay, pro
       />
       
       <div className="card-body">
+        {loggedIn ? 
         <h2 className="card-text">
-          <Link
-            to={`/recipes/${recipe._id}`}
-          >
-            {recipe.name}
-          </Link></h2>
+        <Link
+          to={`/recipes/${recipe._id}`}
+        >
+          {recipe.name}
+        </Link></h2>
+        :
+        <>
+        <h2>{recipe.name}</h2>
+        <p>Please <Link to="/login">log in</Link> to see recipe details</p>
+        </>
+        }
+        
         <p className="card-text">Ingredients: {recipe.ingredients} </p>
         {recipe.calories ?
         <p className="card-text">Calories: {recipe.calories}</p>
