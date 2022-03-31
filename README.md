@@ -1,68 +1,60 @@
-# Decoupled MERN Stack with JWT Auth Template - Front End
+# MealTime
+## by: The Boyz
 
-This is the front end of a decoupled MERN Stack app that includes JWT Authentication.
+---
 
-When combined with the back end found [here](https://github.com/SEI-Remote/decoupled-mern-jwt-auth-template-back-end), you'll have all you need to build a full stack MERN app!
+Meal Time is an app designed to streamline the process of deciding when to have you favorite meals, and how to make them.
 
-Use this to go build things! 🚀
+MealTime is for any busy person who wants to plan their meals ahead of time.
 
-## To Use This Template
+Each user who signs in with their email address will be able to publicy store and edit their favorite recipes and restaurants.
 
-**Replace `<name-of-your-app-here>` in the commands below with the name of your app!**
+Each user will have access to their own private meal planning schedule which meals can be added to an removed. 
 
-```bash
-git clone https://github.com/SEI-Remote/decoupled-mern-jwt-auth-template-front-end <name-of-your-app-here>-front-end
-cd <name-of-your-app-here>-front-end
-```
+---
 
-Once you are in the project directory:
+# [Check it out here!](https://its-mealtime.herokuapp.com/)
 
-```bash
-rm -rf .git
-```
+# [Our Planning Process](https://trello.com/b/DoIbNuaK/mealtime)
 
-Here's what your command line output should like after this step (note that the indicator that we are in a git repository is gone!)
 
-<img src="https://i.imgur.com/L47kNOZ.png" alt="The command line before and after running the rm -rf .git command. Before git:(main) is visible indiating that the directory contains a git repository, after the command it is not.">
+---
 
-Re-initialize a git repository:
+### Public Recipe Gallary:
+<center><img src="https://i.imgur.com/YZJN6AA.png" height=300></center>
 
-```bash
-git init
-```
+### My Schedule:
 
-Use the GitHub CLI to create a new project repository on GitHub:
+<center><img src="https://i.imgur.com/TxhdVP9.png" height=300></center>
 
-```bash
-gh repo create <name-of-your-app-here>-front-end
-```
+### Restaurant Gallary:
 
-Run `npm i` to fetch the template's dependencies:
+<center><img src="https://i.imgur.com/Lczvh0U.png" height=300></center>
 
-```bash
-npm i
-```
+#### Technologies Used 💻:
 
-touch a `.env` file:
+- JavaScript
+- React
+- Node.js
+- Express.js
+- Mongoose
+- MongoDb
+- CSS
+- Bootstrap CSS
+- HTML
+- Git/Github
+- Heroku
+- Cloudinary
+- JWT AUTH
+- AJAX
 
-```bash
-touch .env
-```
+---
 
-Fill it with the following:
+#### Ice Box Features 🧊 :
+- Search Bar
+- "Sort By" options
+- A Full Monthly Calandar 
+- Detailed calorie information from an API
 
-```
-REACT_APP_BACKEND_SERVER_URL=http://localhost:3001
-```
+---
 
-> 🚨 DO NOT place secrets in this `.env` file. The contents of this file WILL be exposed to site visitors.
-
-Delete this README.md, then make an initial commit:
-
-```bash
-git add .
-git commit -m "initial commit"
-git push -u origin main
-```
-
-You're done!
