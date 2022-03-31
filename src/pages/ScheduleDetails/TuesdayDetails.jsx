@@ -4,7 +4,7 @@ import styles from './Details.module.css'
 const TuesdayDetails = (props) => {
   return(
     <>
-    <h1>Menu</h1>
+    <h1>Tuesday's Menu</h1>
     <div className={styles.container}>
     {props.profile?.tuesday?.map((recipe, idx) => (
       <RecipeCard 

@@ -64,6 +64,28 @@ const RecipeDetails = ({user, handleDeleteRecipe, handleDeleteRestaurant, update
     {
       user.profile === recipe.creator?._id ?
         <div>
+          <Link
+            className='btn btn-sm btn-primary'
+            to='/schedule'
+            state={{recipe}}
+            user={user}
+          >
+            Add to schedule
+          </Link>
+          <Link
+              className='btn btn-sm btn-primary'
+              to='/restaurants/myRestaurants'
+              state={{recipe}}
+            >
+              Add Restaurant
+          </Link>
+          <Link
+            className='btn btn-sm btn-warning'
+            to='/edit'
+            state={{recipe}}
+           >
+            Edit
+          </Link>
           <button
             className="btn btn-sm btn-danger m-left"
             onClick={()=> handleDeleteRecipe(recipe._id)}

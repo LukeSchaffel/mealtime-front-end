@@ -55,10 +55,23 @@ const App = () => {
   }, [])
 
   const handleDeleteRecipe = id => {
+    let days = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"]
     recipeService.deleteOne(id)
     .then(deletedRecipe => setRecipes(recipes.filter(recipe => recipe._id !== deletedRecipe._id)))
-    navigate('/recipes')
+    days.forEach(day => {
+      if(profile[day]?.some(meal => meal._id===id)) {
+        profileService.removeRecipeFromDay(id, profile, day)
+        .then(updatedProfile => {
+          profileService.getProfile(user.profile)
+          .then(profile => {
+          setProfile({...profile})
+         })
+        })
+      }
+    })
+    navigate('/profiles/profile')
   }
+
   const handleDeleteRestaurant = id => {
     restaurantService.deleteOne(id)
     .then(deletedRestaurant => setRestaurants(restaurants.filter(restaurant => restaurant._id !== deletedRestaurant._id)))
@@ -78,7 +91,7 @@ const App = () => {
   const handleAddRecipe = async newRecipeData => {
     const newRecipe = await recipeService.create(newRecipeData)
     setRecipes([...recipes, newRecipe])
-    navigate('/recipes')
+    navigate('/profiles/profile')
   }
 
   const handleUpdateRecipe = updateRecipeData => {
@@ -86,7 +99,7 @@ const App = () => {
     .then(updatedRecipe => {
       const newRecipesArray = recipes.map(recipe => recipe._id === updatedRecipe._id ? updatedRecipe : recipe)
       setRecipes(newRecipesArray)
-      navigate('/recipes')
+      navigate('/profiles/profile')
     })
   }
 
@@ -107,7 +120,7 @@ const App = () => {
   const handleAddRestaurant= async newRestaurantData => {
     const newRestaurant = await restaurantService.create(newRestaurantData)
     setRestaurants([...restaurants, newRestaurant])
-    navigate('/restaurants')
+    navigate('/profiles/profile')
   }
 
   const handleUpdateRestaurant = updateRestaurantData => {
@@ -115,7 +128,7 @@ const App = () => {
     .then(updatedRestaurant => {
       const newRestaurantsArray = restaurants.map(restaurant => restaurant._id === updatedRestaurant._id ? updatedRestaurant : restaurant)
       setRestaurants(newRestaurantsArray)
-      navigate('/restaurants')
+      navigate('/profiles/profile')
     })
 
   }

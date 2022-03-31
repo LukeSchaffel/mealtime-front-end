@@ -5,7 +5,7 @@ const MondayDetails = (props) => {
   
   return(
     <>
-    <h1>Menu</h1>
+    <h1>Monday's Menu</h1>
     <div className={styles.container}>
     {props.profile?.monday?.map((recipe, idx) => (
       <RecipeCard 
