@@ -13,7 +13,7 @@ Each user will have access to their own private meal planning schedule which mea
 
 ---
 
-# [Check it out here!]()
+# [Check it out here!](https://its-mealtime.herokuapp.com/)
 
 # [Our Planning Process](https://trello.com/b/DoIbNuaK/mealtime)
 
