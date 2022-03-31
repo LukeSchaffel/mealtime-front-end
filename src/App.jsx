@@ -133,11 +133,13 @@ const App = () => {
 
   const handleAddRecipeToDay = (recipe, profile, day) => {profileService.addRecipeToDay(recipe, profile, day)
     .then(updatedProfile => {
-      setProfile({...updatedProfile})
+      profileService.getProfile(user.profile)
+      .then(profile => {
+      setProfile({...profile})
       navigate(`/schedule/${day}`)
-    })
-    
-  }
+     })}
+    )}
+  
 
   const handleRemoveRecipeFromDay = 
   (recipeId, profile, day) => {

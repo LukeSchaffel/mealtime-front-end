@@ -2,7 +2,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { useState,  } from 'react'
 import styles from './RecipeCard.module.css'
 
-function RecipeCard({recipe, user, handleDeleteRecipe, handleAddRecipeToDay, profile, handleRemoveRecipeFromDay}) {
+function RecipeCard({recipe, user, handleDeleteRecipe, handleAddRecipeToDay, profile, handleRemoveRecipeFromDay, day}) {
     const [ loggedIn, setLoggedIn  ] = useState(user ? true : false)
     
   console.log(recipe._id)
@@ -33,9 +33,9 @@ function RecipeCard({recipe, user, handleDeleteRecipe, handleAddRecipeToDay, pro
         <p className="card-text">Preparation time {recipe.prepTime}</p>
         :null
         }
-        <p className="card-text">Restaurants {recipe.restaurants.length}</p>
+        <p className="card-text">Restaurants {recipe.restaurants?.length}</p>
         <div>
-          {recipe.restaurants.map((restaurant, idx) => 
+          {recipe.restaurants?.map((restaurant, idx) => 
             <p key={idx}>
               {restaurant.name}
             </p>
@@ -85,7 +85,7 @@ function RecipeCard({recipe, user, handleDeleteRecipe, handleAddRecipeToDay, pro
         <button
         className="btn btn-sm btn-primary"
           type="submit"
-          onClick={()=> handleRemoveRecipeFromDay(recipe._id, profile, "friday")}
+          onClick={()=> handleRemoveRecipeFromDay(recipe._id, profile, day)}
         >Remove From Menu</button>
         :null
         } 

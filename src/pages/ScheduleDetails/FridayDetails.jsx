@@ -1,4 +1,3 @@
-
 import { Link, useLocation } from 'react-router-dom'
 import RecipeCard from '../../components/RecipeCard/RecipeCard';
 
@@ -13,6 +12,7 @@ const FridayDetails = (props) => {
       user={props.user}
       handleRemoveRecipeFromDay={props.handleRemoveRecipeFromDay}
       profile={props.user.profile}
+      day={'friday'}
       />
     ))}
     </div>
@@ -20,12 +20,7 @@ const FridayDetails = (props) => {
       <h1>Back to schedule</h1>
     </Link>   
   </>
-
   )
-  
-  
-  
-
 }
 
 export default FridayDetails;
