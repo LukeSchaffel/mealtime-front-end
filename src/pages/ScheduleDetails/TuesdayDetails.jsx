@@ -3,7 +3,7 @@ import RecipeCard from '../../components/RecipeCard/RecipeCard';
 const TuesdayDetails = (props) => {
   return(
     <>
-    <h1>Menu</h1>
+    <h1>Tuesday's Menu</h1>
     <div>
     {props.profile?.tuesday?.map((recipe, idx) => (
       <RecipeCard 
