@@ -4,6 +4,7 @@ import styles from './RecipeCard.module.css'
 
 function RecipeCard({recipe, user, handleDeleteRecipe, handleAddRecipeToDay, profile, handleRemoveRecipeFromDay, day}) {
     const [ loggedIn, setLoggedIn  ] = useState(user ? true : false)
+    const [ hiddenDiv, setHiddenDiv ] = useState (handleRemoveRecipeFromDay ? true : false)
     
   return(
     
@@ -68,15 +69,18 @@ function RecipeCard({recipe, user, handleDeleteRecipe, handleAddRecipeToDay, pro
               </button>
             </div>
           :
-          <div className="card-footer">
-            <p className="card-text"> {recipe.creator?.name ? recipe.creator?.name : 'Ninja'}'s recipe</p>
+          
+          <div className="card-footer" hidden={hiddenDiv}>
+            <p className="card-text" > {recipe.creator?.name ? recipe.creator?.name : 'Ninja'}'s recipe</p>
           </div>
+          
         }
         {handleRemoveRecipeFromDay ?
         <button
         className="btn btn-sm btn-primary"
           type="submit"
           onClick={()=> handleRemoveRecipeFromDay(recipe._id, profile, day)}
+          hidden={hiddenDiv}
         >Remove From Menu</button>
         :null
         } 
