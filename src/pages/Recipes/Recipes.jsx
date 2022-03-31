@@ -8,7 +8,7 @@ const Recipes = (props) => {
   return ( 
     <>
     <main>
-      <h1>All Recipes</h1>
+
         <div id={styles.recipeDiv}>
           {props.recipes.map(recipe => (
             <RecipeCard

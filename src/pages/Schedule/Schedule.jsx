@@ -15,7 +15,6 @@ const Schedule = (props) => {
   
   return ( 
     <>
-    <h1>Schedules</h1>
       <div className={styles.container}>
        <ScheduleCardSunday 
        recipe={recipe}

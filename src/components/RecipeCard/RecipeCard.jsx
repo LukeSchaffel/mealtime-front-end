@@ -11,7 +11,7 @@ function RecipeCard({recipe, user, handleDeleteRecipe, handleAddRecipeToDay}) {
     <div id={styles.cardStyle} className="card">
       
       <img 
-      src={recipe.picture ? recipe.picture : `https://picsum.photos/id/1050/300`} 
+      src={recipe.picture ? recipe.picture : `https://amalghosh.com/assets/food13.jpg`} 
       alt="Restaurant"
       className="card-img-top" 
       />

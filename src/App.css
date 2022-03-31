@@ -29,11 +29,41 @@
 }
 
 .form-label{
-  color: rgb(238, 240, 241);
-  font-size: 20px;
+  color: rgb(236, 243, 245);
+  font-size: 30px;
+  font-weight: 600;
 }
 
 .form-control{
-width: 53rem;
+width: 37rem;
 margin-left: 4rem;
+}
+
+.card-text{
+  color: black;
+}
+
+form{
+  align-self: center;
+  margin-top: 10ch;
+}
+
+.tag{
+  color: rgb(20, 118, 230);
+  font-weight: 700;
+  font-size: 2rem;
+  background-color: rgb(181, 211, 238);
+  border-radius: 80%;
+  margin-right: 2rem;
+}
+
+
+@media only screen and (min-width: 768px) {
+  .form-control{
+    width: 53rem;
+    margin-left: 4rem;
+    justify-content: center;
+    }
+
+    
 }

@@ -5,10 +5,10 @@ const NavBar = ({ user, handleLogout }) => {
     <>
       {user ?
       <header className="App-header">
-        Logged in as {user.name}
+        <a href="/" className='tag'>MealTime</a> 
         <nav>
-          <NavLink end to='/recipes' >All Recipes</NavLink>
-          <NavLink end to='/restaurants'>All Restaurants</NavLink>
+          <NavLink end to='/recipes' >Recipes</NavLink>
+          <NavLink end to='/restaurants'>Restaurants</NavLink>
           <NavLink end to='/profiles/profile'>My profile</NavLink>
           <NavLink to='/schedule'>Meal schedule</NavLink>
           <NavLink to='/recipes/add'>Add Recipe</NavLink>
@@ -18,7 +18,7 @@ const NavBar = ({ user, handleLogout }) => {
       </header>
       :
       <header className="App-header">
-        Please Log In!
+      <a href="/" className='tag'>MealTime</a> 
         <nav>
           <NavLink to='/recipes'>All Recipes</NavLink>
           <NavLink to='/restaurants'>All Restaurants</NavLink>
