@@ -6,7 +6,7 @@ import styles from './RecipeDetails.module.css'
 
 
 
-const RecipeDetails = ({user, handleDeleteRecipe, handleDeleteRestaurant, updateAfterRemoveRestaurant}) => {
+const RecipeDetails = ({user, handleDeleteRecipe, handleDeleteRestaurant, updateAfterRemoveRestaurant, handleAddRecipeToDay}) => {
   const formElement = useRef()
   const [validForm, setValidForm] = useState(false)
 	const [formData, setFormData] = useState({
@@ -58,8 +58,8 @@ const RecipeDetails = ({user, handleDeleteRecipe, handleDeleteRestaurant, update
       />
       : null
       }
-    <h3>{recipe.ingredients}</h3>
-    <h3>{recipe.calories}</h3>
+    <h3>Ingredients: {recipe.ingredients}</h3>
+    <h3>Calories: {recipe.calories}</h3>
     <h3>{recipe.prepTime}</h3>
     <h3>{recipe.instructions}</h3>
     
@@ -142,6 +142,7 @@ const RecipeDetails = ({user, handleDeleteRecipe, handleDeleteRestaurant, update
               <tr>
                <th>Date</th>
                <th>Review</th>
+               <th>Critic</th>
               </tr>
             </thead>
             <tbody>
@@ -149,7 +150,7 @@ const RecipeDetails = ({user, handleDeleteRecipe, handleDeleteRestaurant, update
                 return <tr key ={review._id}>
                   <td>{review.createdAt?.slice(0,10)}</td>
                   <td>{review.content}</td>
-                  <td>{review.content} {review.creator?.name}</td>
+                  <td>{review.creator?.name}</td>
                 </tr>
               })}
             </tbody>

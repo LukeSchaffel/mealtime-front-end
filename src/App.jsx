@@ -35,7 +35,16 @@ const App = () => {
   const [schedules, setSchedules] = useState([])
   const [restaurants, setRestaurants] = useState([])
   const [user, setUser] = useState(authService.getUser())
+  const [profile, setProfile] = useState({})
   const navigate = useNavigate()
+
+  useEffect(()=> {
+    if (user) { 
+     profileService.getProfile(user.profile)
+     .then(profile => {
+       setProfile(profile)
+     })}
+   }, [user])
 
   useEffect(()=> {
     
@@ -122,6 +131,12 @@ const App = () => {
 
   }
 
+  const handleAddRecipeToDay = (recipe, profile, day) => {
+
+    profileService.addRecipeToDay(recipe, profile, day)
+    navigate(`/schedule/${day}`)
+    
+  }
 
   return (
     <>
@@ -165,6 +180,7 @@ const App = () => {
               <Schedule
                 schedules={schedules}
                 user={user} 
+                handleAddRecipeToDay={handleAddRecipeToDay}
               />
               :
               <Navigate to='/login' />
@@ -196,6 +212,7 @@ const App = () => {
           recipes={recipes} 
           user={user}
           handleDeleteRecipe={handleDeleteRecipe}
+          
           />}
         />
         <Route 
@@ -219,42 +236,50 @@ const App = () => {
         path='/schedule/friday'
         element={<FridayDetails 
           user={user}
+          handleAddRecipeToDay={handleAddRecipeToDay}
+          profile={profile}
           />}
         />
         <Route
         path='/schedule/monday'
         element={<MondayDetails 
           user={user}
+          handleAddRecipeToDay={handleAddRecipeToDay}
           />}
         />
         <Route
         path='/schedule/tuesday'
         element={<TuesdayDetails 
           user={user}
+          handleAddRecipeToDay={handleAddRecipeToDay}
           />}
         />
         <Route
         path='/schedule/Wednesday'
         element={<WednesdayDetails 
           user={user}
+          handleAddRecipeToDay={handleAddRecipeToDay}
           />}
         />
         <Route
         path='/schedule/thursday'
         element={<ThursdayDetails 
           user={user}
+          handleAddRecipeToDay={handleAddRecipeToDay}
           />}
         />
         <Route
         path='/schedule/saturday'
         element={<SaturdayDetails 
           user={user}
+          handleAddRecipeToDay={handleAddRecipeToDay}
           />}
         />
         <Route
         path='/schedule/sunday'
         element={<SundayDetails 
           user={user}
+          handleAddRecipeToDay={handleAddRecipeToDay}
           />}
         />
         <Route

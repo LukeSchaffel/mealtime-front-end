@@ -1,12 +1,20 @@
 
 import { Link } from 'react-router-dom'
+import RecipeCard from '../../components/RecipeCard/RecipeCard';
 
-const FridayDetails = () => {
-  
+const FridayDetails = (props) => {
+  console.log(props)
   return(
   <>
-  
-  <h1>Menu</h1>
+   
+    <h1>Menu</h1>
+
+    <div>
+    {props.profile?.friday.map(recipe => (
+      <RecipeCard recipe={recipe}/>
+    ))}
+    </div>
+
   <Link
             to='/schedule'
           class='nohover'>
