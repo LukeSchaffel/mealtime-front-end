@@ -9,4 +9,17 @@ async function getAllProfiles() {
   return await res.json()
 }
 
-export { getAllProfiles }
+function addRecipeToDay(recipe, profile, day) {
+  return fetch(`${BASE_URL}/${profile}/${day}`, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${tokenService.getToken()}`,
+      'content-type': 'application/json'
+    },
+    body: JSON.stringify(recipe)
+
+  })
+  .then(res => res.json())
+}
+
+export { getAllProfiles, addRecipeToDay }

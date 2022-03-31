@@ -1,18 +1,23 @@
 import { Link } from 'react-router-dom'
+import { useLocation } from 'react-router-dom';
 
-function ScheduleCardSunday({schedule, user, handleDeleteRecipe}) {
+function ScheduleCardSunday(props) {
+  let location = useLocation()
   return(
-    
     <div className="card">
       <img 
-        src={`https://picsum.photos/id/1061/300`}
+        src={`https://picsum.photos/id/1062/300`}
         alt="A delicious meal"
         className="card-img-top" 
-      />
-      <Link
-            to='/schedule/sunday'
-          >
-            <h1>Sunday</h1>
+        />
+          <Link to='/schedule/sunday'>
+            <button
+              className="btn btn-sm btn-primary"
+              type="submit"
+              onClick={()=> props.handleAddRecipeToDay(location.state.recipe, props.profile, "sunday")}
+              >
+              Add To Sunday
+              </button>
           </Link>
     </div>
   )

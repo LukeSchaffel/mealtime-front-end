@@ -1,6 +1,10 @@
 import { Link } from 'react-router-dom'
+import { useLocation } from 'react-router-dom';
 
-function ScheduleCardFriday({schedule, user, handleDeleteRecipe}) {
+function ScheduleCardFriday(props) {
+  let location = useLocation()
+  
+
   return(
     
     <div className="card">
@@ -9,11 +13,22 @@ function ScheduleCardFriday({schedule, user, handleDeleteRecipe}) {
         alt="A delicious meal"
         className="card-img-top" 
       />
-     <Link
+      {!location.state?.recipe ?    
+          <Link
             to='/schedule/friday'
           >
-            <h1>Friday</h1>
+           <h1>Friday</h1>
           </Link>
+        :
+          <button
+              className="btn btn-sm btn-primary"
+              type="submit"
+              onClick={()=> props.handleAddRecipeToDay(location.state.recipe, props.profile, "friday")}
+              >
+              Add To Friday
+              </button>
+        }
+      
     </div>
   )
 }

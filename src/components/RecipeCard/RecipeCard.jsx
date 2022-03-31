@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { useState,  } from 'react'
 import styles from './RecipeCard.module.css'
 
-function RecipeCard({recipe, user, handleDeleteRecipe}) {
+function RecipeCard({recipe, user, handleDeleteRecipe, handleAddRecipeToDay}) {
     const [ loggedIn, setLoggedIn  ] = useState(user ? true : false)
     
   
@@ -48,7 +48,10 @@ function RecipeCard({recipe, user, handleDeleteRecipe}) {
             <div className="card-footer">
               <Link
                 className='btn btn-sm btn-primary'
-                to='/profiles/profile/schedule'
+                to='/schedule'
+                state={{recipe}}
+                user={user}
+                handleAddRecipeToDay={handleAddRecipeToDay}
               >
                 Add to schedule
               </Link>

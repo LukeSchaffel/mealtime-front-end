@@ -6,7 +6,7 @@ import styles from './RecipeDetails.module.css'
 
 
 
-const RecipeDetails = ({user, handleDeleteRecipe, handleDeleteRestaurant, updateAfterRemoveRestaurant}) => {
+const RecipeDetails = ({user, handleDeleteRecipe, handleDeleteRestaurant, updateAfterRemoveRestaurant, handleAddRecipeToDay}) => {
   const formElement = useRef()
   const [validForm, setValidForm] = useState(false)
 	const [formData, setFormData] = useState({
