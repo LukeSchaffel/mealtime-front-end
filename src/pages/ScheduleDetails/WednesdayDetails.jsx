@@ -5,8 +5,10 @@ const WednesdayDetails = (props) => {
     <>
     <h1>Menu</h1>
     <div>
-    {props.profile?.wednesday?.map(recipe => (
-      <RecipeCard recipe={recipe} 
+    {props.profile?.wednesday?.map((recipe, idx) => (
+      <RecipeCard 
+      key={idx}
+      recipe={recipe} 
       user={props.user}
       handleRemoveRecipeFromDay={props.handleRemoveRecipeFromDay}
       profile={props.user.profile}

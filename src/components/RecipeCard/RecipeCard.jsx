@@ -5,7 +5,6 @@ import styles from './RecipeCard.module.css'
 function RecipeCard({recipe, user, handleDeleteRecipe, handleAddRecipeToDay, profile, handleRemoveRecipeFromDay, day}) {
     const [ loggedIn, setLoggedIn  ] = useState(user ? true : false)
     
-  console.log(recipe._id)
   return(
     
     <div id={styles.cardStyle} className="card">
@@ -34,13 +33,6 @@ function RecipeCard({recipe, user, handleDeleteRecipe, handleAddRecipeToDay, pro
         :null
         }
         <p className="card-text">Restaurants {recipe.restaurants?.length}</p>
-        <div>
-          {recipe.restaurants?.map((restaurant, idx) => 
-            <p key={idx}>
-              {restaurant.name}
-            </p>
-          )}
-        </div>
       </div>
       
         {loggedIn &&
@@ -51,7 +43,6 @@ function RecipeCard({recipe, user, handleDeleteRecipe, handleAddRecipeToDay, pro
                 to='/schedule'
                 state={{recipe}}
                 user={user}
-                handleAddRecipeToDay={handleAddRecipeToDay}
               >
                 Add to schedule
               </Link>
