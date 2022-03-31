@@ -99,6 +99,9 @@ const App = () => {
     .then(updatedRecipe => {
       const newRecipesArray = recipes.map(recipe => recipe._id === updatedRecipe._id ? updatedRecipe : recipe)
       setRecipes(newRecipesArray)
+      profileService.getProfile(user.profile)
+      .then(profile => {
+      setProfile({...profile})})
       navigate('/profiles/profile')
     })
   }
