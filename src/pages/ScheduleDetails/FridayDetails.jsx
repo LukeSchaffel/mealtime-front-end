@@ -10,14 +10,17 @@ const FridayDetails = (props) => {
     <h1>Menu</h1>
 
     <div>
-    {props.profile?.friday.map(recipe => (
-      <RecipeCard recipe={recipe}/>
+    {props.profile?.friday?.map(recipe => (
+      <RecipeCard recipe={recipe} 
+      user={props.user}
+      
+      />
     ))}
     </div>
 
-  <Link
+          <Link
             to='/schedule'
-          class='nohover'>
+            class='nohover'>
             <h1>Back to schedule</h1>
           </Link>
 
