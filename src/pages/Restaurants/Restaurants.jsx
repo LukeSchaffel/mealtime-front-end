@@ -4,7 +4,8 @@ import RestaurantCard from '../../components/RestaurantCard/RestaurantCard';
 const Restaurants = (props) => {
   return (
     <>
-      <h1>Restaurant</h1>
+    <main>
+      
       <div className={styles.container}>
         {props.restaurants.map(restaurant => (
           <RestaurantCard
@@ -15,6 +16,7 @@ const Restaurants = (props) => {
           />
         ))}
       </div>
+      </main>
     </>
   );
 }

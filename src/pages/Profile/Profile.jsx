@@ -19,12 +19,12 @@ const Profile = (props) => {
           
           <Link to="/changePassword">Change Password</Link>
         </div>
-        <a href="/schedule" className='tag'><button
+        <Link to="/schedule"><button
         type="submit"
         className="btn btn-primary"
         formAction='/schedule' >
           <h4>Schedule</h4>
-        </button></a>
+        </button></Link>
         <button 
         type="button"
         className="btn btn-primary"

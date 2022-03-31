@@ -7,7 +7,6 @@ const MyRestaurants = (props) => {
   let recipe = location.state.recipe
   return ( 
     <>
-    <h1>My Restaurants</h1>
     {props.restaurants.length ? 
           <div className={styles.container}> 
             {props.restaurants.map(restaurant => (

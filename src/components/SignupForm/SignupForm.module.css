@@ -4,13 +4,33 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 50px;
+  margin-top: 10rem;
 }
 
 .label,
 .button {
-  margin-right: .5rem;
+  margin-right: 3rem;
 }
 
 .inputContainer {
   margin-bottom: 1rem;
+}
+
+.button{
+  margin-top: 2rem;
+  width: 300px;
+  margin-left: 7ch;
+}
+
+
+.label{
+  color: rgb(216, 223, 228);
+  font-size: 30px;
+  font-style: oblique;
+}
+
+h1{
+  color: rgb(216, 223, 228);
+  font-size: 30px;
+  font-style: oblique;
 }

@@ -3,3 +3,9 @@
   align-items: center;
   flex-direction: column;
 }
+
+h1{
+  margin-top: 15rem;
+  color: rgb(232, 239, 243);
+  font-weight: 700;
+}
