@@ -55,10 +55,23 @@ const App = () => {
   }, [])
 
   const handleDeleteRecipe = id => {
+    let days = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"]
     recipeService.deleteOne(id)
     .then(deletedRecipe => setRecipes(recipes.filter(recipe => recipe._id !== deletedRecipe._id)))
-    navigate('/recipes')
+    days.forEach(day => {
+      if(profile[day]?.some(meal => meal._id===id)) {
+        profileService.removeRecipeFromDay(id, profile, day)
+        .then(updatedProfile => {
+          profileService.getProfile(user.profile)
+          .then(profile => {
+          setProfile({...profile})
+         })
+        })
+      }
+    })
+    navigate('/profiles/profile')
   }
+
   const handleDeleteRestaurant = id => {
     restaurantService.deleteOne(id)
     .then(deletedRestaurant => setRestaurants(restaurants.filter(restaurant => restaurant._id !== deletedRestaurant._id)))
