@@ -88,7 +88,7 @@ function EditRecipe(props){
                   className="form-control"
                   id="calories-input"
                   name="calories"
-                  value={formData.calories}
+                  value={formData.calories ? formData.calories : formData.calories=''}
                   onChange={handleChange}
                 />
            	</div>
