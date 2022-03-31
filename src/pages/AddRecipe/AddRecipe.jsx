@@ -8,7 +8,7 @@ function AddRecipe(props){
     ingredients: '',
     instructions: '',
     prepTime: '',
-    calories: 0
+    calories: ''
   })
 
   useEffect(()=> {
@@ -71,7 +71,7 @@ function AddRecipe(props){
                 <label htmlFor="instructions-input" className="form-label">
                 instructions (required)
                 </label>
-                <input 
+                <textarea 
                   type="text"
                   className="form-control"
                   id="instructions-input"
