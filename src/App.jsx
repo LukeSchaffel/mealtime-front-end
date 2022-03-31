@@ -91,7 +91,7 @@ const App = () => {
   const handleAddRecipe = async newRecipeData => {
     const newRecipe = await recipeService.create(newRecipeData)
     setRecipes([...recipes, newRecipe])
-    navigate('/recipes')
+    navigate('/profiles/profile')
   }
 
   const handleUpdateRecipe = updateRecipeData => {
@@ -99,7 +99,7 @@ const App = () => {
     .then(updatedRecipe => {
       const newRecipesArray = recipes.map(recipe => recipe._id === updatedRecipe._id ? updatedRecipe : recipe)
       setRecipes(newRecipesArray)
-      navigate('/recipes')
+      navigate('/profiles/profile')
     })
   }
 
@@ -120,7 +120,7 @@ const App = () => {
   const handleAddRestaurant= async newRestaurantData => {
     const newRestaurant = await restaurantService.create(newRestaurantData)
     setRestaurants([...restaurants, newRestaurant])
-    navigate('/restaurants')
+    navigate('/profiles/profile')
   }
 
   const handleUpdateRestaurant = updateRestaurantData => {
@@ -128,7 +128,7 @@ const App = () => {
     .then(updatedRestaurant => {
       const newRestaurantsArray = restaurants.map(restaurant => restaurant._id === updatedRestaurant._id ? updatedRestaurant : restaurant)
       setRestaurants(newRestaurantsArray)
-      navigate('/restaurants')
+      navigate('/profiles/profile')
     })
 
   }
