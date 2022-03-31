@@ -139,6 +139,17 @@ const App = () => {
     
   }
 
+  const handleRemoveRecipeFromDay = 
+  (recipeId, profile, day) => {
+    profileService.removeRecipeFromDay(recipeId, profile, day)
+    .then(updatedProfile => {
+      setProfile({...updatedProfile})
+      navigate(`/schedule/${day}`)
+
+    })
+  }
+
+
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
@@ -239,6 +250,7 @@ const App = () => {
           user={user}
           handleAddRecipeToDay={handleAddRecipeToDay}
           profile={profile}
+          handleRemoveRecipeFromDay={handleRemoveRecipeFromDay}
           />}
         />
         <Route
@@ -246,6 +258,8 @@ const App = () => {
         element={<MondayDetails 
           user={user}
           handleAddRecipeToDay={handleAddRecipeToDay}
+          profile={profile}
+          handleRemoveRecipeFromDay={handleRemoveRecipeFromDay}
           />}
         />
         <Route
@@ -253,6 +267,8 @@ const App = () => {
         element={<TuesdayDetails 
           user={user}
           handleAddRecipeToDay={handleAddRecipeToDay}
+          profile={profile}
+          handleRemoveRecipeFromDay={handleRemoveRecipeFromDay}
           />}
         />
         <Route
@@ -260,6 +276,8 @@ const App = () => {
         element={<WednesdayDetails 
           user={user}
           handleAddRecipeToDay={handleAddRecipeToDay}
+          profile={profile}
+          handleRemoveRecipeFromDay={handleRemoveRecipeFromDay}
           />}
         />
         <Route
@@ -267,6 +285,8 @@ const App = () => {
         element={<ThursdayDetails 
           user={user}
           handleAddRecipeToDay={handleAddRecipeToDay}
+          profile={profile}
+          handleRemoveRecipeFromDay={handleRemoveRecipeFromDay}
           />}
         />
         <Route
@@ -274,6 +294,8 @@ const App = () => {
         element={<SaturdayDetails 
           user={user}
           handleAddRecipeToDay={handleAddRecipeToDay}
+          profile={profile}
+          handleRemoveRecipeFromDay={handleRemoveRecipeFromDay}
           />}
         />
         <Route
@@ -281,6 +303,8 @@ const App = () => {
         element={<SundayDetails 
           user={user}
           handleAddRecipeToDay={handleAddRecipeToDay}
+          profile={profile}
+          handleRemoveRecipeFromDay={handleRemoveRecipeFromDay}
           />}
         />
         <Route

@@ -28,7 +28,7 @@ function ScheduleCardFriday(props) {
               >
               Add To Friday
               </button>
-        }
+      }
       
     </div>
   )

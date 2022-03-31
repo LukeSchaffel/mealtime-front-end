@@ -1,11 +1,11 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { useState,  } from 'react'
 import styles from './RecipeCard.module.css'
 
-function RecipeCard({recipe, user, handleDeleteRecipe, handleAddRecipeToDay}) {
+function RecipeCard({recipe, user, handleDeleteRecipe, handleAddRecipeToDay, profile, handleRemoveRecipeFromDay}) {
     const [ loggedIn, setLoggedIn  ] = useState(user ? true : false)
     
-  
+  console.log(recipe._id)
   return(
     
     <div id={styles.cardStyle} className="card">
@@ -81,7 +81,14 @@ function RecipeCard({recipe, user, handleDeleteRecipe, handleAddRecipeToDay}) {
             <p className="card-text"> {recipe.creator?.name ? recipe.creator?.name : 'Ninja'}'s recipe</p>
           </div>
         }
-      
+        {handleRemoveRecipeFromDay ?
+        <button
+        className="btn btn-sm btn-primary"
+          type="submit"
+          onClick={()=> handleRemoveRecipeFromDay(recipe._id, profile, "friday")}
+        >Remove From Menu</button>
+        :null
+        } 
     </div>
   )
 }
