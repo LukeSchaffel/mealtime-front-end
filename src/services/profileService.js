@@ -22,4 +22,11 @@ function addRecipeToDay(recipe, profile, day) {
   .then(res => res.json())
 }
 
-export { getAllProfiles, addRecipeToDay }
+async function getProfile(profileId) {
+  const res = await fetch(`${BASE_URL}/${profileId}`, {
+    headers: { Authorization: `Bearer ${tokenService.getToken()}` },
+  })
+  return await res.json()
+}
+
+export { getAllProfiles, addRecipeToDay, getProfile }

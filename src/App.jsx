@@ -35,7 +35,16 @@ const App = () => {
   const [schedules, setSchedules] = useState([])
   const [restaurants, setRestaurants] = useState([])
   const [user, setUser] = useState(authService.getUser())
+  const [profile, setProfile] = useState({})
   const navigate = useNavigate()
+
+  useEffect(()=> {
+    if (user) { 
+     profileService.getProfile(user.profile)
+     .then(profile => {
+       setProfile(profile)
+     })}
+   }, [user])
 
   useEffect(()=> {
     
@@ -228,6 +237,7 @@ const App = () => {
         element={<FridayDetails 
           user={user}
           handleAddRecipeToDay={handleAddRecipeToDay}
+          profile={profile}
           />}
         />
         <Route
