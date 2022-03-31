@@ -8,7 +8,7 @@ function AddRecipe(props){
     ingredients: '',
     instructions: '',
     prepTime: '',
-    calories: 0
+    calories: ''
   })
 
   useEffect(()=> {

@@ -59,9 +59,13 @@ const RecipeDetails = ({user, handleDeleteRecipe, handleDeleteRestaurant, update
       : null
       }
     <h3>Ingredients: {recipe.ingredients}</h3>
+    {recipe.calories ?
     <h3>Calories: {recipe.calories}</h3>
-    <h3>{recipe.prepTime}</h3>
-    <h3>{recipe.instructions}</h3>
+    :null}
+    {recipe.prepTime ?
+    <h3>Time To Prepare: {recipe.prepTime}</h3>
+    :null}
+    <h3>How to Make: {recipe.instructions}</h3>
     
     {
       user.profile === recipe.creator?._id ?
