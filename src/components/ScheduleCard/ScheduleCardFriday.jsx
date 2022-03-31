@@ -4,7 +4,6 @@ import { useLocation } from 'react-router-dom';
 function ScheduleCardFriday(props) {
   let location = useLocation()
   
-
   return(
     
     <div className="card">
@@ -27,7 +26,7 @@ function ScheduleCardFriday(props) {
               >
               Add To Friday
               </button>
-        }
+      }
       
     </div>
   )

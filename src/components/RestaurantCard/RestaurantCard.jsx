@@ -21,7 +21,6 @@ function RestaurantCard({restaurant, user, handleDeleteRestaurant, handleAddRest
     }
   }
 
-
   return(
     
     <div className="card">
@@ -47,12 +46,6 @@ function RestaurantCard({restaurant, user, handleDeleteRestaurant, handleAddRest
             user.profile === restaurant.creator?._id ?
               <div className="card-footer">
                 <Link
-                  className='btn btn-sm btn-primary'
-                  to='/profiles/profile/schedule'
-                >
-                  Add location
-                </Link>
-                <Link
                   className='btn btn-sm btn-warning'
                   to='/editRestaurant'
                   state={{restaurant}}
@@ -68,7 +61,7 @@ function RestaurantCard({restaurant, user, handleDeleteRestaurant, handleAddRest
               </div>
             :
             <div className="card-footer">
-              <p className="card-text"> {restaurant.creator?.name ? restaurant.creator?.name : 'Chef'}'s Restaurant</p>
+              <p className="card-text"> Added by {restaurant.creator?.name ? restaurant.creator?.name : 'Someone'}</p>
             </div>
       }
       
