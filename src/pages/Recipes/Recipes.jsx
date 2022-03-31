@@ -2,7 +2,9 @@ import RecipeCard from "../../components/RecipeCard/RecipeCard";
 import styles from './Recipes.module.css'
 
 
+
 const Recipes = (props) => {
+  
   return ( 
     <>
     <main>
@@ -13,7 +15,9 @@ const Recipes = (props) => {
               key={recipe._id}
               recipe={recipe}
               handleDeleteRecipe={props.handleDeleteRecipe}
-              user={props.user} />
+              user={props.user}
+              handleAddRecipeToDay={props.handleAddRecipeToDay}
+              />
           ))}
         </div>
     </main> 
