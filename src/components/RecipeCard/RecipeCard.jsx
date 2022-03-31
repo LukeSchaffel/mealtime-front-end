@@ -1,11 +1,10 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { useState,  } from 'react'
 import styles from './RecipeCard.module.css'
 
-function RecipeCard({recipe, user, handleDeleteRecipe, handleAddRecipeToDay}) {
+function RecipeCard({recipe, user, handleDeleteRecipe, handleAddRecipeToDay, profile, handleRemoveRecipeFromDay, day}) {
     const [ loggedIn, setLoggedIn  ] = useState(user ? true : false)
     
-  
   return(
     
     <div id={styles.cardStyle} className="card">
@@ -32,14 +31,7 @@ function RecipeCard({recipe, user, handleDeleteRecipe, handleAddRecipeToDay}) {
         <p className="card-text">Preparation time {recipe.prepTime}</p>
         :null
         }
-        <p className="card-text">Restaurants {recipe.restaurants.length}</p>
-        <div>
-          {recipe.restaurants.map((restaurant, idx) => 
-            <p key={idx}>
-              {restaurant.name}
-            </p>
-          )}
-        </div>
+        <p className="card-text">Restaurants {recipe.restaurants?.length}</p>
       </div>
       
         {loggedIn &&
@@ -50,7 +42,6 @@ function RecipeCard({recipe, user, handleDeleteRecipe, handleAddRecipeToDay}) {
                 to='/schedule'
                 state={{recipe}}
                 user={user}
-                handleAddRecipeToDay={handleAddRecipeToDay}
               >
                 Add to schedule
               </Link>
@@ -80,7 +71,14 @@ function RecipeCard({recipe, user, handleDeleteRecipe, handleAddRecipeToDay}) {
             <p className="card-text"> {recipe.creator?.name ? recipe.creator?.name : 'Ninja'}'s recipe</p>
           </div>
         }
-      
+        {handleRemoveRecipeFromDay ?
+        <button
+        className="btn btn-sm btn-primary"
+          type="submit"
+          onClick={()=> handleRemoveRecipeFromDay(recipe._id, profile, day)}
+        >Remove From Menu</button>
+        :null
+        } 
     </div>
   )
 }

@@ -12,7 +12,6 @@ const Schedule = (props) => {
   let location = useLocation()
   let recipe = location.state?.recipe
   
-  
   return ( 
     <>
     <h1>Schedules</h1>
@@ -45,11 +44,10 @@ const Schedule = (props) => {
        <ScheduleCardFriday 
        recipe={recipe}
        handleAddRecipeToDay={props.handleAddRecipeToDay}
-       profile={props.user.profile}
+       profile={props.profile}
        />
        <ScheduleCardSaturday
        recipe={recipe}
-       handleAddRecipeToDay={props.handleAddRecipeToDay}
        profile={props.user.profile}
        />
       </div>

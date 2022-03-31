@@ -29,4 +29,15 @@ async function getProfile(profileId) {
   return await res.json()
 }
 
-export { getAllProfiles, addRecipeToDay, getProfile }
+function removeRecipeFromDay(recipeId, profile, day) {
+  return fetch(`${BASE_URL}/${profile}/${day}/${recipeId}`, {
+    method: 'DELETE',
+    headers: {
+      'Authorization': `Bearer ${tokenService.getToken()}`
+    }
+  })
+  .then(res => res.json())
+}
+
+
+export { getAllProfiles, addRecipeToDay, getProfile, removeRecipeFromDay }

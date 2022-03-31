@@ -5,7 +5,6 @@ import NavBar from './components/NavBar/NavBar'
 import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
-import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import * as authService from './services/authService'
 import AddRecipe from './pages/AddRecipe/AddRecipe'
@@ -32,7 +31,6 @@ import MyRestaurants from './pages/MyRestaurants/MyRestaurants'
 
 const App = () => {
   const [recipes, setRecipes] = useState([])
-  const [schedules, setSchedules] = useState([])
   const [restaurants, setRestaurants] = useState([])
   const [user, setUser] = useState(authService.getUser())
   const [profile, setProfile] = useState({})
@@ -47,23 +45,14 @@ const App = () => {
    }, [user])
 
   useEffect(()=> {
-    
       recipeService.getAll()
       .then(allRecipes => setRecipes(allRecipes))
-    
   }, [])
 
   useEffect(()=> {
-    
       restaurantService.getAll()
       .then(allRestaurants => setRestaurants(allRestaurants))
-    
   }, [])
-
-  useEffect(()=> {
-    profileService.getAllProfiles()
-    .then(schedules => setSchedules(schedules))
-  }, [user])
 
   const handleDeleteRecipe = id => {
     recipeService.deleteOne(id)
@@ -131,12 +120,28 @@ const App = () => {
 
   }
 
-  const handleAddRecipeToDay = (recipe, profile, day) => {
+  const handleAddRecipeToDay = (recipe, profile, day) => {profileService.addRecipeToDay(recipe, profile, day)
+    .then(updatedProfile => {
+      profileService.getProfile(user.profile)
+      .then(profile => {
+      setProfile({...profile})
+      navigate(`/schedule/${day}`)
+     })}
+    )}
+  
 
-    profileService.addRecipeToDay(recipe, profile, day)
-    navigate(`/schedule/${day}`)
-    
+  const handleRemoveRecipeFromDay = 
+  (recipeId, profile, day) => {
+    profileService.removeRecipeFromDay(recipeId, profile, day)
+    .then(updatedProfile => {
+      profileService.getProfile(user.profile)
+      .then(profile => {
+      setProfile({...profile})
+      navigate(`/schedule/${day}`)
+     })
+    })
   }
+
 
   return (
     <>
@@ -178,7 +183,6 @@ const App = () => {
             element={
               user ?
               <Schedule
-                schedules={schedules}
                 user={user} 
                 handleAddRecipeToDay={handleAddRecipeToDay}
               />
@@ -238,6 +242,7 @@ const App = () => {
           user={user}
           handleAddRecipeToDay={handleAddRecipeToDay}
           profile={profile}
+          handleRemoveRecipeFromDay={handleRemoveRecipeFromDay}
           />}
         />
         <Route
@@ -245,6 +250,8 @@ const App = () => {
         element={<MondayDetails 
           user={user}
           handleAddRecipeToDay={handleAddRecipeToDay}
+          profile={profile}
+          handleRemoveRecipeFromDay={handleRemoveRecipeFromDay}
           />}
         />
         <Route
@@ -252,6 +259,8 @@ const App = () => {
         element={<TuesdayDetails 
           user={user}
           handleAddRecipeToDay={handleAddRecipeToDay}
+          profile={profile}
+          handleRemoveRecipeFromDay={handleRemoveRecipeFromDay}
           />}
         />
         <Route
@@ -259,6 +268,8 @@ const App = () => {
         element={<WednesdayDetails 
           user={user}
           handleAddRecipeToDay={handleAddRecipeToDay}
+          profile={profile}
+          handleRemoveRecipeFromDay={handleRemoveRecipeFromDay}
           />}
         />
         <Route
@@ -266,6 +277,8 @@ const App = () => {
         element={<ThursdayDetails 
           user={user}
           handleAddRecipeToDay={handleAddRecipeToDay}
+          profile={profile}
+          handleRemoveRecipeFromDay={handleRemoveRecipeFromDay}
           />}
         />
         <Route
@@ -273,6 +286,8 @@ const App = () => {
         element={<SaturdayDetails 
           user={user}
           handleAddRecipeToDay={handleAddRecipeToDay}
+          profile={profile}
+          handleRemoveRecipeFromDay={handleRemoveRecipeFromDay}
           />}
         />
         <Route
@@ -280,11 +295,9 @@ const App = () => {
         element={<SundayDetails 
           user={user}
           handleAddRecipeToDay={handleAddRecipeToDay}
+          profile={profile}
+          handleRemoveRecipeFromDay={handleRemoveRecipeFromDay}
           />}
-        />
-        <Route
-          path="/profiles"
-          element={user ? <Profiles /> : <Navigate to="/login" />}
         />
         <Route
           path="/changePassword"
