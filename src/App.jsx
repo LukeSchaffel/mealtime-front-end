@@ -131,10 +131,11 @@ const App = () => {
 
   }
 
-  const handleAddRecipeToDay = (recipe, profile, day) => {
-
-    profileService.addRecipeToDay(recipe, profile, day)
-    navigate(`/schedule/${day}`)
+  const handleAddRecipeToDay = (recipe, profile, day) => {profileService.addRecipeToDay(recipe, profile, day)
+    .then(updatedProfile => {
+      setProfile({...updatedProfile})
+      navigate(`/schedule/${day}`)
+    })
     
   }
 
