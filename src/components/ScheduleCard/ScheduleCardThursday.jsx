@@ -10,15 +10,18 @@ function ScheduleCardThursday(props) {
         alt="A delicious meal"
         className="card-img-top" 
         />
-          <Link to='/schedule/thursday'>
-            <button
-              className="btn btn-sm btn-primary"
-              type="submit"
-              onClick={()=> props.handleAddRecipeToDay(location.state.recipe, props.profile, "thursday")}
-              >
-              Add To Thursday
-              </button>
-          </Link>
+        {!location.state?.recipe ?    
+        <Link to='/schedule/thursday'>
+          <h1>Thursday</h1>
+        </Link>
+        :
+        <button
+          className="btn btn-sm btn-primary"
+          type="submit"
+          onClick={()=> props.handleAddRecipeToDay(location.state.recipe, props.profile, "thursday")}
+          > Add To Thursday
+        </button>
+        }
     </div>
   )
 }
