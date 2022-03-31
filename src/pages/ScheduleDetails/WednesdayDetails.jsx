@@ -1,10 +1,11 @@
 import { Link, useLocation } from 'react-router-dom'
 import RecipeCard from '../../components/RecipeCard/RecipeCard';
+import styles from './Details.module.css'
 const WednesdayDetails = (props) => {
   return(
     <>
     <h1>Menu</h1>
-    <div>
+    <div className={styles.container}>
     {props.profile?.wednesday?.map((recipe, idx) => (
       <RecipeCard 
       key={idx}

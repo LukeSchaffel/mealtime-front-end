@@ -6,7 +6,7 @@ function ScheduleCardThursday(props) {
   return(
     <div className="card">
       <img 
-        src={`https://picsum.photos/id/1062/300`}
+        src={`https://picsum.photos/id/23/300`}
         alt="A delicious meal"
         className="card-img-top" 
         />

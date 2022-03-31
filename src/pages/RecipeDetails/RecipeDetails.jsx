@@ -49,43 +49,21 @@ const RecipeDetails = ({user, handleDeleteRecipe, handleDeleteRestaurant, update
 
   return (
     <>
+    <div id={styles.recipeDiv}>
     <h1>{recipe.name}</h1>
-    {recipe.picture ?
-      <img 
-        src={recipe.picture}
-        alt="A delicious meal"
-        className="card-img-top" 
+    <img 
+      src={recipe.picture ? recipe.picture : `https://amalghosh.com/assets/food13.jpg`} 
+      alt="Recipe" 
       />
-      : null
-      }
+      
     <h3>Ingredients: {recipe.ingredients}</h3>
     <h3>Calories: {recipe.calories}</h3>
-    <h3>{recipe.prepTime}</h3>
-    <h3>{recipe.instructions}</h3>
+    <h3>Preptime:{recipe.prepTime}</h3>
+    <h3>Instruction:{recipe.instructions}</h3>
     
     {
       user.profile === recipe.creator?._id ?
         <div>
-          <Link
-            className='btn btn-sm btn-primary'
-            to='/profiles/profile/schedule'
-          >
-            Add to schedule
-          </Link>
-          <Link
-              className='btn btn-sm btn-primary'
-              to='/restaurants/myRestaurants'
-              state={{recipe}}
-            >
-              Add Restaurant
-          </Link>
-          <Link
-            className='btn btn-sm btn-warning'
-            to='/edit'
-            state={{recipe}}
-           >
-            Edit
-          </Link>
           <button
             className="btn btn-sm btn-danger m-left"
             onClick={()=> handleDeleteRecipe(recipe._id)}
@@ -158,6 +136,7 @@ const RecipeDetails = ({user, handleDeleteRecipe, handleDeleteRestaurant, update
        :
         <h3>No Reviews Yet</h3>
        } 
+       </div>
     </>
 
   )

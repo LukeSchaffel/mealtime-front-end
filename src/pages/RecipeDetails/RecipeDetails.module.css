@@ -1,7 +1,18 @@
-main {
-  text-align: center;
+img.card-img-top{
+
+  
 }
 
-.container {
-  width: 30%;
+h1{
+  margin-top: 3rem;
+  font-size: 50px;
+  color: rgb(41, 37, 37);
+  text-decoration: underline;
+}
+
+h3{
+  font-size: 35px;
+  color: rgb(3, 3, 3);
+  font-weight: 700;
+
 }
