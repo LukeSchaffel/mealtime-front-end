@@ -14,7 +14,7 @@ const TuesdayDetails = (props) => {
       />
     ))}
     </div>
-    <Link to='/schedule'class='nohover'>
+    <Link to='/schedule'className='nohover'>
       <h1>Back to schedule</h1>
     </Link>   
   </>
