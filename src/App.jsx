@@ -145,9 +145,11 @@ const App = () => {
   (recipeId, profile, day) => {
     profileService.removeRecipeFromDay(recipeId, profile, day)
     .then(updatedProfile => {
-      setProfile({...updatedProfile})
+      profileService.getProfile(user.profile)
+      .then(profile => {
+      setProfile({...profile})
       navigate(`/schedule/${day}`)
-
+     })
     })
   }
 

@@ -11,6 +11,7 @@ const SaturdayDetails = (props) => {
       user={props.user}
       handleRemoveRecipeFromDay={props.handleRemoveRecipeFromDay}
       profile={props.user.profile}
+      day={'saturday'}
       />
     ))}
     </div>
