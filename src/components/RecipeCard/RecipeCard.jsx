@@ -49,6 +49,7 @@ function RecipeCard({recipe, user, handleDeleteRecipe, handleAddRecipeToDay, pro
                 to='/schedule'
                 state={{recipe}}
                 user={user}
+                id={styles.addToSchedule}
               >
                 Add to schedule
               </Link>
@@ -66,7 +67,7 @@ function RecipeCard({recipe, user, handleDeleteRecipe, handleAddRecipeToDay, pro
               >
                 Edit
               </Link>
-              <button
+              <button      
                 className="btn btn-sm btn-danger m-left"
                 onClick={()=> handleDeleteRecipe(recipe._id)}
               >
