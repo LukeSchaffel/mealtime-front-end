@@ -13,12 +13,15 @@ const Profile = (props) => {
   return ( 
     <>
       <main>
+        <div className={styles.top}>
         <h1>Welcome {props.user.name}</h1>
         <div id={styles.email}>
           <h2>{props.user.email}</h2>
-          
-          <Link to="/changePassword">Change Password</Link>
+        
+
+          <Link id={styles.passwordlink} to="/changePassword">Change Password</Link>
         </div>
+        </div>  
         <Link to="/schedule"><button
         type="submit"
         className="btn btn-primary"

@@ -30,8 +30,6 @@ function RecipeCard({recipe, user, handleDeleteRecipe, handleAddRecipeToDay, pro
         <p>Please <Link to="/login">log in</Link> to see recipe details</p>
         </>
         }
-        
-        <p className="card-text">Ingredients: {recipe.ingredients} </p>
         {recipe.calories ?
         <p className="card-text">Calories: {recipe.calories}</p>
         :null

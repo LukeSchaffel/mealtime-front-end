@@ -6,7 +6,7 @@ const FridayDetails = (props) => {
 
   return(
   <>
-    <h1>Friday's Menu</h1>
+    <h1 className={styles.topAndBottom}>Friday's Menu</h1>
     <div className={styles.container}>
     {props.profile?.friday?.map((recipe, idx) => (
       <RecipeCard 
@@ -20,7 +20,7 @@ const FridayDetails = (props) => {
     ))}
     </div>
     <a href="/schedule" className='atag'>
-      <h1>Back to schedule</h1>
+      <h1 className={styles.topAndBottom}>Back to schedule</h1>
       </a>
   </>
   )
