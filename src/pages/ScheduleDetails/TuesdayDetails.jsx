@@ -4,7 +4,7 @@ import styles from './Details.module.css'
 const TuesdayDetails = (props) => {
   return(
     <>
-    <h1>Tuesday's Menu</h1>
+    <h1 className={styles.topAndBottom}>Tuesday's Menu</h1>
     <div className={styles.container}>
     {props.profile?.tuesday?.map((recipe, idx) => (
       <RecipeCard 
@@ -18,7 +18,7 @@ const TuesdayDetails = (props) => {
     ))}
     </div>
     <Link to='/schedule'className='nohover'>
-      <h1>Back to schedule</h1>
+      <h1 className={styles.topAndBottom}>Back to schedule</h1>
     </Link>   
   </>
   )  

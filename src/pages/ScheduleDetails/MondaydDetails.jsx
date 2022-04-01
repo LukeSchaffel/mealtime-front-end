@@ -5,7 +5,7 @@ const MondayDetails = (props) => {
   
   return(
     <>
-    <h1>Monday's Menu</h1>
+    <h1 className={styles.topAndBottom}>Monday's Menu</h1>
     <div className={styles.container}>
     {props.profile?.monday?.map((recipe, idx) => (
       <RecipeCard 
@@ -19,7 +19,7 @@ const MondayDetails = (props) => {
     ))}
     </div>
     <Link to='/schedule'className='nohover'>
-      <h1>Back to schedule</h1>
+      <h1 className={styles.topAndBottom}>Back to schedule</h1>
     </Link>   
     </>
     )
